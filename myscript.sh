@@ -1,3 +1,4 @@
+cd b2bdevice
 git reset --hard 
 git pull
 yarn
