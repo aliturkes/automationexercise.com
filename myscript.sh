@@ -4,4 +4,4 @@ git pull
 yarn
 cd client
 npm i
-npm build
+npm run build
