@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #19567E;
+  --second-color: #9CCE6B;
+  --third-color: #102D40;
+  --fourth-color: #3FC4F5;
+  --white: #fff;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-image: url("./assets/images/dots-background.png");
+}
+
+
+
+/* HEADER SECTION*/
+
+.nav-link {
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .active {
+  border-bottom: 2px solid gray;
+}
+
+
+
+/* FORM SECTION*/
+
+.mb-3 {
+  transition: all 0.3s ease;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.1rem 0;
+  font-weight: 500;
+}
+
+.form-label svg {
+  fill: gray;
+
+}
+
+.lineRight {
+  width: 100%;
+  height: 1px;
+  background-color: #cfd9e0;
+  /* background-color: black; */
+}
+
+
+.from-btn {
+  width: 100px;
+}
+
+.form-control[disabled] {
+  border-color: #F8F9FA;
+  color: black;
+  background-color: #F8F9FA;
+  background-image: none;
+  appearance: none;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+
+.form-select[readonly] {
+  border-color: #F8F9FA;
+  pointer-events: none;
+  color: black;
+  background-color: #F8F9FA;
+  background-image: none;
+  appearance: none;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+
+.form-control[readonly]::placeholder,
+.form-control[readonly]::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-control,
+.form-select {
+  transition: all 0.3s ease;
+}
+
+
+.form-control[value=""]:not(:focus) {
+  color: transparent;
+}
+
+.form-control[type=number]::-webkit-outer-spin-button,
+.form-control[type=number]::-webkit-inner-spin-button {
+  display: none;
+}
+
+.form-control[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+
+
+
+/* FOOTER SECTION*/
+
+footer svg {
+  fill: #6c757d;
+}
+
+
+
+
+
+/* GRIDJS TABLE SECTION */
+
+.gridjs-wrapper {
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  border: 1px solid #C4C4C4 !important;
+}
+
+.gridjs-footer {
+  box-shadow: none !important;
+  border: none !important;
+  padding: 10px 0 10px 12px !important;
+}
+
+.gridjs-tr td {
+  padding: 4px 12px !important;
+}
+
+.gridjs-tr td:last-child {
+  text-align: center;
+}
+
+.gridjs-tr th {
+  padding: 8px !important;
+  text-align: center;
+}
+
+.gridjs-pagination .gridjs-pages button:first-child {
+  border-radius: 5px 0 0 5px !important;
+}
+
+.gridjs-pagination .gridjs-pages button:last-child {
+  border-radius: 0 5px 5px 0 !important;
+}
+
+/* .gridjs-head {
+  display: flex;
+  justify-content: flex-end;
+} */
+
+.gridjs-search {
+  /* display: flex !important; */
+  width: 100% !important;
+}
+
+.gridjs-input {
+  width: 100% !important;
+}
+
+.next-button,
+.prev-button {
+  font-weight: 800;
+}
+
+
+
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 425px) {
+  .header li {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .header {
+    margin: 10px auto;
+  }
+
+}
+
+
+
+
+/* LOADING SPINNER CSS */
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px)
+  }
+
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
