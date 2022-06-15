@@ -1,0 +1,13 @@
+pipelines:
+  default:
+    - step:
+        name: 'deploy'
+        deployment: test
+        script:
+          - pipe: atlassian/ssh-run:0.4.1
+            variables:
+              SSH_USER: 'root'
+              SERVER: 'ersah.in'
+              SSH_KEY: $MY_SSH_KEY
+              MODE: 'script'
+              COMMAND: 'myscript.sh'
