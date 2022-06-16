@@ -52,12 +52,12 @@ export default function Login() {
                   <Form onSubmit={handleSubmit}>
 
                      <Form.Group className="mb-3" controlId="email">
-                        <Form.Control size='lg' name="email" type="email" placeholder="Email" className="bg-light py-2" onChange={onInputChange} value={formData.email} required />
+                        <Form.Control name="email" type="email" placeholder="Email" className="bg-light py-2" size='lg' onChange={onInputChange} value={formData.email} required />
                      </Form.Group>
 
                      <Form.Group className="mb-4 show-relative" controlId="password">
                         <span className='show-password text-muted' onClick={() => setShowPassword(!showPassword)} >{showPassword ? <FaRegEyeSlash /> : <FaRegEye />}</span>
-                        <Form.Control name="password" type={showPassword ? "text" : "password"} placeholder="Şifre" className="bg-light py-2" onChange={onInputChange} value={formData.password} required />
+                        <Form.Control name="password" type={showPassword ? "text" : "password"} placeholder="Şifre" className="bg-light py-2" size='lg' onChange={onInputChange} value={formData.password} required />
                      </Form.Group>
 
                      <Button variant="primary" type='submit' className="mb-4 px-4">Giriş Yap</Button>

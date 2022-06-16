@@ -60,13 +60,13 @@ export default function PasswordReset() {
 
 
                      <Form.Group controlId="regPersonPassword" className="mb-3">
-                        <Form.Control name="new_password" type="password" minLength="6" maxLength="20" placeholder="Password"
+                        <Form.Control name="new_password" type="password" minLength="6" maxLength="20" placeholder="Password" size='lg' 
                            className={`bg-light py-2` + (validated.valid ? ((formData.new_password === validated.password_confirm) && formData.new_password !== "" ? " is-valid" : " is-invalid") : "")}
                            onChange={onInputChange} value={formData.new_password} required />
                      </Form.Group>
 
                      <Form.Group controlId="regPersonRePassword" className="mb-3">
-                        <Form.Control name="password_confirm" type="password" minLength="6" maxLength="20" placeholder="Confirm Password"
+                        <Form.Control name="password_confirm" type="password" minLength="6" maxLength="20" placeholder="Confirm Password" size='lg' 
                            className={`bg-light py-2` + (validated.valid ? ((formData.new_password === validated.password_confirm) && validated.password_confirm !== "" ? " is-valid" : " is-invalid") : "")}
                            onChange={(e) => setValidated({ ...validated, password_confirm: e.target.value })} value={validated.password_confirm} required />
                      </Form.Group>

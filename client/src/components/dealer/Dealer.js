@@ -14,6 +14,7 @@ export default function Dealer() {
             <h1 className="display-5 text-muted mb-3 text-end">Telefon Listesi</h1>
 
             <DealerDevice />
+            
          </Container>
          <Footer/>
       </div>

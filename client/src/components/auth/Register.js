@@ -70,49 +70,49 @@ export default function Register() {
             <Form onSubmit={handleSubmit}>
 
               <Form.Group controlId="regPersonDealer" className="mb-3">
-                <Form.Control name="dealer" type="text" maxLength="30" placeholder="Firma Adı"
+                <Form.Control name="dealer" type="text" maxLength="30" placeholder="Firma Adı" size='lg' 
                   className={`bg-light py-2` + (validated.valid ? (formData.dealer ? " is-valid" : " is-invalid") : "")}
                   onChange={onInputChange} value={formData.dealer} required />
               </Form.Group>
 
               <Form.Group controlId="regPersonName" className="mb-3">
-                <Form.Control name="name" type="text" maxLength="30" placeholder="Ad Soyad"
+                <Form.Control name="name" type="text" maxLength="30" placeholder="Ad Soyad" size='lg' 
                   className={`bg-light py-2` + (validated.valid ? (formData.name ? " is-valid" : " is-invalid") : "")}
                   onChange={onInputChange} value={formData.name} required />
               </Form.Group>
 
               <Form.Group controlId="regPersonEmail" className="mb-3">
-                <Form.Control name="email" type="email" maxLength="30" placeholder="Email"
+                <Form.Control name="email" type="email" maxLength="30" placeholder="Email" size='lg' 
                   className={`bg-light py-2` + (validated.valid ? (formData.email.includes("@") ? " is-valid" : " is-invalid") : "")}
                   onChange={onInputChange} value={formData.email} required />
               </Form.Group>
 
               <Form.Group controlId="regPersonPhone" className="mb-3">
-                <Form.Control name="phone" type="email" maxLength="30" placeholder="Telefon Numarası"
+                <Form.Control name="phone" type="email" maxLength="30" placeholder="Telefon Numarası" size='lg' 
                   className={`bg-light py-2` + (validated.valid ? (formData.phone ? " is-valid" : " is-invalid") : "")}
                   onChange={onInputChange} value={formData.phone} required />
               </Form.Group>
 
               <Form.Group controlId="regPersonPassword" className="mb-3">
-                <Form.Control name="password" type="password" minLength="6" maxLength="20" placeholder="Şifre"
+                <Form.Control name="password" type="password" minLength="6" maxLength="20" placeholder="Şifre" size='lg' 
                   className={`bg-light py-2` + (validated.valid ? ((formData.password === validated.password_confirm) && formData.password !== "" ? " is-valid" : " is-invalid") : "")}
                   onChange={onInputChange} value={formData.password} required />
               </Form.Group>
 
               <Form.Group controlId="regPersonRePassword" className="mb-3">
-                <Form.Control name="password_confirm" type="password" minLength="6" maxLength="20" placeholder="Şifre Tekrar"
+                <Form.Control name="password_confirm" type="password" minLength="6" maxLength="20" placeholder="Şifre Tekrar" size='lg' 
                   className={`bg-light py-2` + (validated.valid ? ((formData.password === validated.password_confirm) && validated.password_confirm !== "" ? " is-valid" : " is-invalid") : "")}
                   onChange={(e) => setValidated({ ...validated, password_confirm: e.target.value })} value={validated.password_confirm} required />
               </Form.Group>
 
               <Form.Check type="checkbox" id="regPersonCheckbox" className="text-start mb-4">
-                <Form.Check.Input type="checkbox"
+                <Form.Check.Input type="checkbox" 
                   className={`text-start mb-4` + (validated.valid ? (validated.terms ? " is-valid" : " is-invalid") : "")}
                   onChange={(e) => setValidated({ ...validated, terms: e.target.checked })} checked={validated.terms} required />
                 <Form.Check.Label className="fw-normal is-invalid"><Link to="#">Hizmet koşullarını</Link> kabul ediyorum.</Form.Check.Label>
               </Form.Check>
 
-              <Button variant="primary" type="submit" className="mb-4 px-4" onClick={() => setValidated({ ...validated, valid: true })}>Kayıt Ol</Button>
+              <Button variant="primary" type="submit" className="mb-4 px-4"  onClick={() => setValidated({ ...validated, valid: true })}>Kayıt Ol</Button>
 
             </Form>
 

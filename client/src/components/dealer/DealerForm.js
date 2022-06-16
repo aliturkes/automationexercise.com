@@ -9,11 +9,9 @@ const initialState = { _id: "", brand: "", model: "", storage: "", color: "", pr
 export default function DealerForm(props) {
 
 
-   // const { request } = props
+   const { device } = props
 
-   // const dispatch = useDispatch()
-
-
+   const dispatch = useDispatch()
 
    const [formData, setFormData] = useState(initialState)
 
@@ -40,9 +38,8 @@ export default function DealerForm(props) {
 
    }
 
-   // useEffect(() => setFormData(request ? request : initialState), [props])
+   useEffect(() => setFormData(device ? device : initialState), [props])
 
-   const today = new Date().toISOString().split("T")[0]
 
 
 
@@ -55,7 +52,7 @@ export default function DealerForm(props) {
 
          <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-               {/* {request ? "Request Edit" : "Request Form"} */}
+               {device ? "Cihaz Düzenle" : "Cihaz Ekle"}
             </Modal.Title>
          </Modal.Header>
 
@@ -66,30 +63,29 @@ export default function DealerForm(props) {
 
                <Row className='align-items-end'>
 
-
                   <Form.Group controlId="dealerBrand" className="mb-3">
                      <Form.Label>Marka</Form.Label>
-                     <Form.Control name="other_service_type" type="text" maxLength="50" onChange={onInputChange} value={formData.brand}/>
+                     <Form.Control name="other_service_type" type="text" maxLength="50" size='lg' onChange={onInputChange} value={formData.brand} />
                   </Form.Group>
 
                   <Form.Group controlId="dealerModel" className="mb-3">
                      <Form.Label>Model</Form.Label>
-                     <Form.Control name="other_service_type" type="text" maxLength="50" onChange={onInputChange} value={formData.model}/>
+                     <Form.Control name="other_service_type" type="text" maxLength="50" size='lg' onChange={onInputChange} value={formData.model} />
                   </Form.Group>
 
                   <Form.Group controlId="dealerStorage" className="mb-3">
                      <Form.Label>Hafıza</Form.Label>
-                     <Form.Control name="other_service_type" type="text" maxLength="50" onChange={onInputChange} value={formData.storage}/>
+                     <Form.Control name="other_service_type" type="text" maxLength="50" size='lg' onChange={onInputChange} value={formData.storage} />
                   </Form.Group>
 
                   <Form.Group controlId="dealerColor" className="mb-3">
                      <Form.Label>Renk</Form.Label>
-                     <Form.Control name="other_service_type" type="text" maxLength="50" onChange={onInputChange} value={formData.color}/>
+                     <Form.Control name="other_service_type" type="text" maxLength="50" size='lg' onChange={onInputChange} value={formData.color} />
                   </Form.Group>
 
                   <Form.Group controlId="dealerPrice" className="mb-3">
                      <Form.Label>Fiyat</Form.Label>
-                     <Form.Control name="other_service_type" type="text" maxLength="50" onChange={onInputChange} value={formData.price}/>
+                     <Form.Control name="other_service_type" type="text" maxLength="50" size='lg' onChange={onInputChange} value={formData.price} />
                   </Form.Group>
 
 
@@ -107,13 +103,12 @@ export default function DealerForm(props) {
 
 
                <Col className="d-flex justify-content-end mt-2 gap-2">
-                  {/* 
-                  <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delRequest(request._id), props.onHide())} style={{ display: !request && "none" }}>Sil</Button>
+                  
+                  <Button variant="outline-danger from-btn" type="button" /*onClick={() => dispatch(delRequest(device._id), props.onHide())}*/ style={{ display: !device && "none" }}>Sil</Button>
 
                   <Button variant="outline-secondary from-btn" type="button" >Vazgeç</Button>
 
-         
-                  <Button variant="outline-primary from-btn" type="submit" onClick={() => !request && props.onHide()}>Kaydet</Button> */}
+                  <Button variant="outline-primary from-btn" type="submit" onClick={() => !device && props.onHide()}>Kaydet</Button>
 
                </Col>
 

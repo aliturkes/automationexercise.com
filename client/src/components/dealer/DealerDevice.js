@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-import { Table, Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusLg, BsPencilSquare } from 'react-icons/bs'
@@ -59,7 +59,6 @@ export default function DealerDevice() {
    ]
 
 
-
    const columns = [
       { id: "brand", name: "Marka", width: "100%" },
       { id: "model", name: "Model", width: "100%" },
@@ -70,9 +69,6 @@ export default function DealerDevice() {
    ];
 
    data.map(item => item.edit = _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => { setDetailShow(true); setDevice(item) }}><BsPencilSquare /></Button>))
-
-
-
 
 
 
@@ -114,4 +110,3 @@ export default function DealerDevice() {
 
    )
 }
-
