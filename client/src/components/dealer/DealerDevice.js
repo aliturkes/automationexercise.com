@@ -84,6 +84,7 @@ export default function DealerDevice() {
             columns={columns}
             data={data}
             fullWidth={true}
+           
             language={
                {
                   'search': {
@@ -92,7 +93,10 @@ export default function DealerDevice() {
                   'pagination': {
                      'previous': '<',
                      'next': '>',
-                  }
+                  },
+                  "loading": 'Bekleniyor...',
+                  "noRecordsFound": 'Gösterilecek kayıt yok',
+                  "error": 'Veriler alınırken bir hata oluştu',
                }
             }
             className={{

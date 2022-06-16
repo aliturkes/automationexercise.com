@@ -12,7 +12,7 @@ export default function Admin() {
    return (
       <>
          <AdminHeader />
-         <Container className="card p-3 p-md-4 p-lg-5 my-3">
+         <Container className="card p-3 p-md-4 p-lg-5 my-2">
 
          <Routes>
 					<Route path="/" element={<DeviceList />} />

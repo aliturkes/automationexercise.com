@@ -9,7 +9,7 @@ export default function DealerHeader() {
 
 	return (
 		<Navbar expand="md">
-			<Container className="justify-content-between align-items-end">
+			<Container className="justify-content-between align-items-end mt-3">
 
 				<Navbar.Brand href="/">
 					{/* <img src="/img/logo.png" alt="logo" height="60"></img> */}
@@ -20,8 +20,7 @@ export default function DealerHeader() {
 
 					<Nav className="align-items-center gap-2" id="nav">
 
-
-						<div className="nav-link text-body">Öztürkler İletişim</div>
+						<div>Öztürkler İletişim</div>
 
 						<Dropdown className="d-inline">
 							<Dropdown.Toggle size="sm" variant="link" className="text-dark p-0">
@@ -29,10 +28,10 @@ export default function DealerHeader() {
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align="end">
-								<Dropdown.Item href="#">Change Password</Dropdown.Item>
-								<Dropdown.Item href="#">Delete Profile</Dropdown.Item>
+								<Dropdown.Item href="#">Şifre Değiştir</Dropdown.Item>
+								<Dropdown.Item href="#">Hesabı Sil</Dropdown.Item>
 								<Dropdown.Divider />
-								<Dropdown.Item as="button" onClick={() => { navigate("/") }}>Sign Out</Dropdown.Item>
+								<Dropdown.Item as="button" onClick={() => { navigate("/") }}>Çıkış Yap</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown>
 

@@ -35,10 +35,10 @@ const data = [
 
 const columns = [
    { id: "dealer", name: 'Firma', width: "100%"  },
-   { id: "first", name: 'First Name', width: "100%"  },
-   { id: "last", name: 'Last Name', width: "100%"  },
+   { id: "first", name: 'Adı', width: "100%"  },
+   { id: "last", name: 'Soyadı', width: "100%"  },
    // { id: 'email', name: 'Email', width: "100%"  },
-   { id: 'phoneNumber', name: 'Phone Number', width: "100%"  },
+   { id: 'phoneNumber', name: 'Telefon No', width: "100%"  },
    { id: "edit", name: _(<Button variant="success" size='sm' onClick={() => {/* setDetailShow(true); setRequest(null)*/ }}><BsPlusLg /></Button>), sort: false,  },
 ]
 
@@ -72,12 +72,15 @@ export default function DealerList() {
             language={
                {
                   'search': {
-                     'placeholder': 'Search in requests...'
+                     'placeholder': 'Arama...'
                   },
                   'pagination': {
                      'previous': '<',
                      'next': '>',
-                  }
+                  },
+                  "loading": 'Bekleniyor...',
+                  "noRecordsFound": 'Gösterilecek kayıt yok',
+                  "error": 'Veriler alınırken bir hata oluştu',
                }
             }
             className={{

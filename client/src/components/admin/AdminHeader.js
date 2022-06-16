@@ -9,7 +9,7 @@ export default function AdminHeader() {
 
 	return (
 		<Navbar expand="md">
-			<Container className="justify-content-between align-items-end">
+			<Container className="justify-content-between align-items-end mt-3">
 
 				<Navbar.Brand href="/">
 					{/* <img src="/img/logo.png" alt="logo" height="60"></img> */}
@@ -30,10 +30,10 @@ export default function AdminHeader() {
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align="end">
-								<Dropdown.Item href="#">Change Password</Dropdown.Item>
-								<Dropdown.Item href="#">Delete Profile</Dropdown.Item>
+								<Dropdown.Item href="#">Şifre Değiştir</Dropdown.Item>
+								<Dropdown.Item href="#">Hesabı Sil</Dropdown.Item>
 								<Dropdown.Divider />
-								<Dropdown.Item as="button" onClick={() => { navigate("/") }}>Sign Out</Dropdown.Item>
+								<Dropdown.Item as="button" onClick={() => { navigate("/") }}>Çıkış Yap</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown>
 

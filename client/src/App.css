@@ -33,7 +33,7 @@ body {
 
 /* HEADER SECTION*/
 
-.nav-link {
+.navbar-nav .nav-link {
   border-bottom: 2px solid transparent;
 }
 

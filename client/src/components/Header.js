@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 
 export default function Header() {
 
-	const navigate = useNavigate()
+
 
 	return (
-		<Navbar >
-			<Container className="justify-content-between align-items-end">
+		<Navbar className="p-0 bg-dark">
+			<Container>
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			
-					<Nav className="align-items-center gap-2" id="nav">
 
-						<NavLink className="nav-link text-body" to="/">Login</NavLink>
-						<NavLink className="nav-link text-body" to="/admin">Admin</NavLink>
-						<NavLink className="nav-link text-body" to="/dealer">Bayii</NavLink>
+				<Nav className="gap-3" id="nav">
 
-					</Nav>
+					<NavLink className="text-light text-decoration-none" to="/">Login</NavLink>
+					<NavLink className="text-light text-decoration-none" to="/admin">Admin</NavLink>
+					<NavLink className="text-light text-decoration-none" to="/dealer">Bayii</NavLink>
+
+				</Nav>
 
 			</Container>
 		</Navbar>

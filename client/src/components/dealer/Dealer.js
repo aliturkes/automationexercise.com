@@ -10,7 +10,7 @@ export default function Dealer() {
    return (
       <div>
          <DealerHeader/>
-         <Container className="card p-3 p-md-4 p-lg-5 my-3">
+         <Container className="card p-3 p-md-4 p-lg-5 my-2">
             <h1 className="display-5 text-muted mb-3 text-end">Telefon Listesi</h1>
 
             <DealerDevice />

@@ -100,7 +100,10 @@ export default function DeviceList() {
                   'pagination': {
                      'previous': '<',
                      'next': '>',
-                  }
+                  },
+                  "loading": 'Bekleniyor...',
+                  "noRecordsFound": 'Gösterilecek kayıt yok',
+                  "error": 'Veriler alınırken bir hata oluştu',
                }
             }
             className={{
