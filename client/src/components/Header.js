@@ -17,7 +17,7 @@ export default function Header() {
 
 					<NavLink className="text-light text-decoration-none" to="/">Login</NavLink>
 					<NavLink className="text-light text-decoration-none" to="/admin">Admin</NavLink>
-					<NavLink className="text-light text-decoration-none" to="/dealer">Bayii</NavLink>
+					<NavLink className="text-light text-decoration-none" to="/company">Bayii</NavLink>
 
 				</Nav>
 

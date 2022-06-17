@@ -3,7 +3,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Page404 from './components/Page404';
 import Admin from './components/admin/Admin';
-import Dealer from './components/dealer/Dealer';
+import Company from './components/company/Company';
 import Header from './components/Header';
 import PasswordReset from './components/auth/PasswordReset';
 import './App.css';
@@ -23,7 +23,7 @@ export default function App() {
           <Route path="password-forgot" element={<PasswordReset />} />
 
           <Route path="admin/*" element={<Admin />} />
-          <Route path="dealer/*" element={<Dealer />} />
+          <Route path="company/*" element={<Company />} />
 
           <Route path="*" element={<Page404 />} />
 

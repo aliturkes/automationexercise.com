@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import Footer from '../Footer'
 import AdminHeader from './AdminHeader'
-import DealerList from './DealerList'
+import CompanyList from './CompanyList'
 import "gridjs/dist/theme/mermaid.css";
 import { Route, Routes } from 'react-router-dom'
 import DeviceList from './DeviceList'
@@ -16,7 +16,7 @@ export default function Admin() {
 
          <Routes>
 					<Route path="/" element={<DeviceList />} />
-					<Route path="/dealers" element={<DealerList/>} />
+					<Route path="/company" element={<CompanyList/>} />
 				</Routes>
 
             

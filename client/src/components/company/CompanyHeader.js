@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 
 
-export default function DealerHeader() {
+export default function CompanyHeader() {
 
 	const navigate = useNavigate()
 

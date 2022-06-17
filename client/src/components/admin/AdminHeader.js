@@ -22,7 +22,7 @@ export default function AdminHeader() {
 
 
 						<NavLink className="nav-link text-body" to="/admin/">Cihaz Listesi</NavLink>
-						<NavLink className="nav-link text-body" to="/admin/dealers">Bayi Listesi</NavLink>
+						<NavLink className="nav-link text-body" to="/admin/company">Bayi Listesi</NavLink>
 
 						<Dropdown className="d-inline">
 							<Dropdown.Toggle size="sm" variant="link" className="text-dark p-0">

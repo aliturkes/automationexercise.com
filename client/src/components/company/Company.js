@@ -1,12 +1,12 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import Footer from '../Footer'
-import DealerDevice from './DealerDevice'
-import DealerHeader from './DealerHeader'
+import DealerDevice from './CompanyDevice'
+import DealerHeader from './CompanyHeader'
 import "gridjs/dist/theme/mermaid.css";
 
 
-export default function Dealer() {
+export default function Company() {
    return (
       <div>
          <DealerHeader/>

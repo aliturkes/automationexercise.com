@@ -4,11 +4,11 @@ import thunk from "redux-thunk";
 import promise from 'redux-promise-middleware'
 import logger from 'redux-logger'
 import adminReducer from "./admin.reducers";
-import dealerReducer from "./dealer.reducer";
+import companyReducer from "./company.reducer";
 
 
 
-const reducer = combineReducers({ adminReducer, dealerReducer });
+const reducer = combineReducers({ adminReducer, companyReducer });
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, promise, logger)));
 

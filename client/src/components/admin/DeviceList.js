@@ -6,55 +6,58 @@ import { useNavigate } from 'react-router-dom';
 import { BsPlusLg, BsPencilSquare } from 'react-icons/bs'
 import { Grid, _ } from "gridjs-react";
 // import DealerForm from './DealerForm';
+import { getDevices } from '../../store/actions';
 
 export default function DeviceList() {
 
 
    const navigate = useNavigate()
 
-   // const dispatch = useDispatch()
+   const dispatch = useDispatch()
 
-   // const store = useSelector(state => state.institutionReducer)
+   const store = useSelector(state => state.adminReducer)
+
+   const { devices, error, loading } = store
 
    // const token_id = JSON.parse(localStorage.getItem('token')).id;
 
-   // useEffect(() => { dispatch(getRequest(token_id)) }, [token_id])
+   useEffect(() => { dispatch(getDevices()) }, [])
 
-   // useEffect(() => { token_id ? dispatch(getRequest(token_id)) : navigate("/") }, [token_id])
+   // useEffect(() => { token_id ? dispatch(getDevices()) : navigate("/") }, [token_id])
 
-   // const { relationships, error, loading } = store
+
 
    const [detailShow, setDetailShow] = useState(false);
 
    const [device, setDevice] = useState(null);
 
    const data = [
-      { dealer: "Elma", brand: 'Apple', model: 'Iphone 13 Pro', storage: '256GB', color: 'Siyah', price: '25.000₺' },
-      { dealer: "Armut", brand: 'Huawei', model: 'P20 Lite', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { dealer: "Çilek", brand: 'Samsung', model: 'Galaxy M12', storage: '128GB', color: 'Beyaz', price: '10.000₺' },
-      { dealer: "Armut", brand: 'Oppo', model: 'A74', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Apple', model: 'Iphone 11', storage: '256GB', color: 'Siyah', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Xiaomi', model: 'Redmi 9c', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Apple', model: 'Iphone 12', storage: '128GB', color: 'Beyaz', price: '20.000₺' },
-      { dealer: "Armut", brand: 'Apple', model: 'Iphone 11', storage: '256GB', color: 'Siyah', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy S20', storage: '256GB', color: 'Beyaz', price: '25.000₺' },
-      { dealer: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy M12', storage: '128GB', color: 'Beyaz', price: '10.000₺' },
-      { dealer: "Armut", brand: 'Huawei', model: 'P20 Lite', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { dealer: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
-      { dealer: "Armut", brand: 'Apple', model: 'Iphone 12', storage: '128GB', color: 'Beyaz', price: '20.000₺' },
+      { company: "Elma", brand: 'Apple', model: 'Iphone 13 Pro', storage: '256GB', color: 'Siyah', price: '25.000₺' },
+      { company: "Armut", brand: 'Huawei', model: 'P20 Lite', storage: '128GB', color: 'Siyah', price: '5.000₺' },
+      { company: "Çilek", brand: 'Samsung', model: 'Galaxy M12', storage: '128GB', color: 'Beyaz', price: '10.000₺' },
+      { company: "Armut", brand: 'Oppo', model: 'A74', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
+      { company: "Armut", brand: 'Apple', model: 'Iphone 11', storage: '256GB', color: 'Siyah', price: '15.000₺' },
+      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
+      { company: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
+      { company: "Armut", brand: 'Xiaomi', model: 'Redmi 9c', storage: '128GB', color: 'Siyah', price: '5.000₺' },
+      { company: "Armut", brand: 'Apple', model: 'Iphone 12', storage: '128GB', color: 'Beyaz', price: '20.000₺' },
+      { company: "Armut", brand: 'Apple', model: 'Iphone 11', storage: '256GB', color: 'Siyah', price: '15.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy S20', storage: '256GB', color: 'Beyaz', price: '25.000₺' },
+      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
+      { company: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy M12', storage: '128GB', color: 'Beyaz', price: '10.000₺' },
+      { company: "Armut", brand: 'Huawei', model: 'P20 Lite', storage: '128GB', color: 'Siyah', price: '5.000₺' },
+      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
+      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
+      { company: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
+      { company: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
+      { company: "Armut", brand: 'Apple', model: 'Iphone 12', storage: '128GB', color: 'Beyaz', price: '20.000₺' },
 
    ]
 
@@ -62,7 +65,7 @@ export default function DeviceList() {
 
 
    const columns = [
-      { id: "dealer", name: "Firma", width: "100%" },
+      { id: "company", name: "Firma", width: "100%" },
       { id: "brand", name: "Marka", width: "100%" },
       { id: "model", name: "Model", width: "100%" },
       { id: "storage", name: "Hafıza", width: "100%" },
@@ -85,7 +88,7 @@ export default function DeviceList() {
 
 
          <Grid
-            pagination={{ limit: 10 }}
+            pagination={{ limit: 10, summary: false }}
             search={true}
             sort={true}
             // resizable={true}
