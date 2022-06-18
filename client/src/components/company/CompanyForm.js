@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useDispatch } from 'react-redux'
-import { putDevice, postDevice } from '../../store/actions';
+import { putDevice, postDevice,delDevice } from '../../store/actions';
 
-const initialState = { brand: "", model: "", storage: "", color: "", price: "" }
+const initialState = { id: null, brand: "", model: "", storage: "", color: "", price: "" }
 
 
 
@@ -12,7 +12,7 @@ const initialState = { brand: "", model: "", storage: "", color: "", price: "" }
 export default function CompanyForm(props) {
 
 
-   const { deviceState } = props
+   const { devicestate } = props
 
    const dispatch = useDispatch()
 
@@ -25,25 +25,22 @@ export default function CompanyForm(props) {
    const handleSubmit = (e) => {
       e.preventDefault();
 
-      if (deviceState) {
-         //    dispatch(putDevice(formData))
+      if (devicestate) {
+            dispatch(putDevice(formData))
          //    setFormData(initialState)
-
-         console.log("put", formData);
 
       } else {
          dispatch(postDevice(formData))
          setFormData(initialState)
-         console.log("post", formData);
-
       }
    }
 
-   useEffect(() => setFormData(deviceState ? deviceState : initialState), [deviceState])
+   useEffect(() => setFormData(devicestate ? devicestate : initialState), [devicestate])
 
 
    console.log(formData);
-   console.log(deviceState);
+   console.log(devicestate);
+   console.log(devicestate);
 
 
    return (
@@ -51,7 +48,7 @@ export default function CompanyForm(props) {
 
          <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-               {deviceState ? "Cihaz Düzenle" : "Cihaz Ekle"}
+               {devicestate ? "Cihaz Düzenle" : "Cihaz Ekle"}
             </Modal.Title>
          </Modal.Header>
 
@@ -99,11 +96,11 @@ export default function CompanyForm(props) {
 
                <Col className="d-flex justify-content-end mt-2 gap-2">
 
-                  <Button variant="outline-danger from-btn" type="button" /*onClick={() => dispatch(delRequest(device._id), props.onHide())}*/ style={{ display: !deviceState && "none" }}>Sil</Button>
+                  <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delDevice(devicestate.id), props.onHide())} style={{ display: !devicestate && "none" }}>Sil</Button>
 
                   <Button variant="outline-secondary from-btn" type="button" >Vazgeç</Button>
 
-                  <Button variant="outline-primary from-btn" type="submit" onClick={() => !deviceState && props.onHide()}>Kaydet</Button>
+                  <Button variant="outline-primary from-btn" type="submit" onClick={() => !devicestate && props.onHide()}>Kaydet</Button>
 
                </Col>
 

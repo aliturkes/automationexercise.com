@@ -88,7 +88,7 @@ export default function CompanyDevice() {
          />
 
 
-         <CompanyForm show={detailShow} onHide={() => setDetailShow(false)} deviceState={deviceState} />
+         <CompanyForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} />
 
          {loading && <div className="loading"><div className="spinner"></div></div>}
 

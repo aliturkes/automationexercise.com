@@ -35,7 +35,7 @@ export function login(data) {
    return dispatch => {
       dispatch({
          type: "POST_LOGIN",
-         payload: API.post(users + "login", data)
+         payload: API.post(users + "/login", data)
       }).then(res => {
          res.value.data.id && localStorage.setItem("token", JSON.stringify(res.value.data))
       })
@@ -172,13 +172,13 @@ export function postDevice(data) {
    }
 }
 
-
+// https://b2bdevice.tk/api/users/1/devices/4?access_token=548OWrq1q9QXrbiYLB4FbiV80CcbqfOGtdpKzRgdwL7FyEwMXj8ICXwwR6Cf8O3l
 
 export function putDevice(data) {
    return dispatch => {
       dispatch({
          type: "PUT_DEVICE",
-         payload: API.put(users + data._id, data)
+         payload: API.put(users + userId() + devices + "/" + data.id + "?access_token=" + token(), data)
       })
    }
 }
@@ -188,8 +188,8 @@ export function delDevice(id) {
    return dispatch => {
       dispatch({
          type: "DEL_DEVICE",
-         payload: API.delete(users + id)
-      })
+         payload: API.delete(users + userId() + devices + "/" + id + "?access_token=" + token())
+      }).then(res => { console.log(res) })
    }
 }
 
