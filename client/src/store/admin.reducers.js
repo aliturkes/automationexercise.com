@@ -7,8 +7,8 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, { type, payload }) => {
+  
   switch (type) {
-
 
     case "GET_DEVICES_PENDING":
       return { ...state, loading: true }
@@ -45,6 +45,49 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     case "DEL_DEVICES_FULFILLED":
       return { ...state, devices: state.devices.filter(item => item._id !== payload.data._id), error: "" }
+
+
+
+//--------------------------------- USERS --------------------------------//
+
+
+      case "GET_USERS_PENDING":
+      return { ...state, loading: true }
+
+    case "GET_USERS_FULFILLED":
+      return { ...state, users: payload.data.reverse(), error: "", loading: false }
+
+    case "GET_USERS_REJECTED":
+      return { ...state, error: payload.message, loading: false }
+
+
+
+    case "POST_USERS_PENDING":
+      return { ...state, sending: true }
+
+    case "POST_USERS_FULFILLED":
+      return { ...state, users: [payload.data, ...state.users], sending: false }
+
+    case "POST_USERS_REJECTED":
+      return { ...state, error: payload.message, sending: false }
+
+
+
+    case "PUT_USERS_PENDING":
+      return { ...state, sending: true }
+
+    case "PUT_USERS_FULFILLED":
+      return { ...state, users: state.users.map(item => item._id === payload.data._id ? payload.data : item), sending: false }
+
+    case "PUT_USERS_REJECTED":
+      return { ...state, error: payload.message, sending: false }
+
+
+
+    case "DEL_USERS_FULFILLED":
+      return { ...state, users: state.users.filter(item => item._id !== payload.data._id), error: "" }
+
+
 
 
     default:

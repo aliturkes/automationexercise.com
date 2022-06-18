@@ -4,7 +4,7 @@ import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useDispatch } from 'react-redux'
 import { putDevice, postDevice } from '../../store/actions';
 
-const initialState = { id: "", brand: "", model: "", storage: "", color: "", price: "" }
+const initialState = { brand: "", model: "", storage: "", color: "", price: "" }
 
 
 
@@ -32,8 +32,8 @@ export default function CompanyForm(props) {
          console.log("put", formData);
 
       } else {
-            dispatch(postDevice(formData))
-         // setFormData(initialState)
+         dispatch(postDevice(formData))
+         setFormData(initialState)
          console.log("post", formData);
 
       }

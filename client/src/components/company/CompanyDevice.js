@@ -49,7 +49,7 @@ export default function CompanyDevice() {
       },
    ];
 
-   // data.map(item => item.edit = _()
+ 
 
    console.log(deviceState);
 
@@ -90,7 +90,7 @@ export default function CompanyDevice() {
 
          <CompanyForm show={detailShow} onHide={() => setDetailShow(false)} deviceState={deviceState} />
 
-         {/* {loading && <div className="loading"><div className="spinner"></div></div>} */}
+         {loading && <div className="loading"><div className="spinner"></div></div>}
 
       </>
 

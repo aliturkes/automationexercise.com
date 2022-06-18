@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Card } from 'react-bootstrap';
-import './auth.css'
 import { FaRegEye, FaRegEyeSlash, FaUnlock } from "react-icons/fa";
 import Background from './Background';
+import { login } from '../../store/actions'
+
+
+const initialState = { email: "", password: "" }
 
 
 export default function Login() {
 
-   //   const dispatch = useDispatch()
+   const dispatch = useDispatch()
 
    const navigate = useNavigate();
 
@@ -21,14 +24,14 @@ export default function Login() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      // dispatch(login(formData))
+      console.log(formData);
+      dispatch(login(formData))
+      setFormData(initialState)
    };
 
 
    // useEffect(() => { myuser?.page && navigate("/" + myuser?.page) }, [myuser])
 
-
-   console.log(formData);
 
 
    return (

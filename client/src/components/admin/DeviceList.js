@@ -8,6 +8,9 @@ import { Grid, _ } from "gridjs-react";
 // import DealerForm from './DealerForm';
 import { getDevices } from '../../store/actions';
 
+
+
+
 export default function DeviceList() {
 
 
@@ -25,43 +28,13 @@ export default function DeviceList() {
 
    // useEffect(() => { token_id ? dispatch(getDevices()) : navigate("/") }, [token_id])
 
-
-
    const [detailShow, setDetailShow] = useState(false);
 
-   const [device, setDevice] = useState(null);
+   const [deviceState, setDeviceState] = useState(null);
 
-   const data = [
-      { company: "Elma", brand: 'Apple', model: 'Iphone 13 Pro', storage: '256GB', color: 'Siyah', price: '25.000₺' },
-      { company: "Armut", brand: 'Huawei', model: 'P20 Lite', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { company: "Çilek", brand: 'Samsung', model: 'Galaxy M12', storage: '128GB', color: 'Beyaz', price: '10.000₺' },
-      { company: "Armut", brand: 'Oppo', model: 'A74', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { company: "Armut", brand: 'Apple', model: 'Iphone 11', storage: '256GB', color: 'Siyah', price: '15.000₺' },
-      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { company: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
-      { company: "Armut", brand: 'Xiaomi', model: 'Redmi 9c', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { company: "Armut", brand: 'Apple', model: 'Iphone 12', storage: '128GB', color: 'Beyaz', price: '20.000₺' },
-      { company: "Armut", brand: 'Apple', model: 'Iphone 11', storage: '256GB', color: 'Siyah', price: '15.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy S20', storage: '256GB', color: 'Beyaz', price: '25.000₺' },
-      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
-      { company: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy M12', storage: '128GB', color: 'Beyaz', price: '10.000₺' },
-      { company: "Armut", brand: 'Huawei', model: 'P20 Lite', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { company: "Armut", brand: 'Huawei', model: 'Nova 9', storage: '128GB', color: 'Siyah', price: '5.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy S21', storage: '128GB', color: 'Beyaz', price: '5.000₺' },
-      { company: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
-      { company: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
-      { company: "Armut", brand: 'Apple', model: 'Iphone 12', storage: '128GB', color: 'Beyaz', price: '20.000₺' },
+   const data = [...devices]
 
-   ]
-
-
+   data.map(item => item.company = item.user.company)
 
 
    const columns = [
@@ -71,21 +44,25 @@ export default function DeviceList() {
       { id: "storage", name: "Hafıza", width: "100%" },
       { id: "color", name: "Renk", width: "100%" },
       { id: "price", name: "Fiyat", width: "100%" },
-      { id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDevice(null) }}><BsPlusLg /></Button>), sort: false, },
+      { id: "id", name: "id", hidden: true },
+      {
+         id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,
+         formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
+            // console.log(row);
+            setDetailShow(true);
+            setDeviceState({ id: row.cells[5].data, company: row.cells[0].data, brand: row.cells[1].data, model: row.cells[2].data, storage: row.cells[3].data, color: row.cells[4].data, price: row.cells[5].data })
+         }}><BsPencilSquare /></Button>)
+      },
    ];
 
-   data.map(item => item.edit = _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => { setDetailShow(true); setDevice(item) }}><BsPencilSquare /></Button>))
+   console.log(devices);
 
-
-
-
-
+   console.log(deviceState);
 
    return (
 
       <>
          <h1 className="display-5 text-muted mb-3 text-end">Bayi Telefon Listesi</h1>
-
 
          <Grid
             pagination={{ limit: 10, summary: false }}
@@ -116,9 +93,9 @@ export default function DeviceList() {
          />
 
 
-         {/* <DealerForm show={detailShow} onHide={() => setDetailShow(false)} device={device} /> */}
+         {/* <DealerForm show={detailShow} onHide={() => setDetailShow(false)} deviceState={deviceState} /> */}
 
-         {/* {loading && <div className="loading"><div className="spinner"></div></div>} */}
+         {loading && <div className="loading"><div className="spinner"></div></div>}
 
 
       </>
