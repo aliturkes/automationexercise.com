@@ -14,6 +14,10 @@
     },
     "phone": {
       "type": "string"
+    },    
+    "deleted": {
+      "type": "boolean",
+      "defaultFn": false
     }
   },
   "validations": [],
@@ -35,6 +39,12 @@
       "accessType": "*",
       "principalType": "USER",
       "principalId": 1,
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
       "permission": "ALLOW"
     }
   ],

@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = function(Device) {
-
-  Device.observe('after delete', async function(ctx) {
-    ctx.info["id"] = ctx.where.id;
-    return;
-  });
+  // Device.observe('access', function(ctx, next) {
+  //   // if ( !ctx.query.where)  ctx.query["where"] = {}
+  //   // ctx.query.where.or = [{deleted: null}, {deleted: false}];
+  //   // next()
+  // });
 };

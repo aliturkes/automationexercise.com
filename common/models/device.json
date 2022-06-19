@@ -25,6 +25,10 @@
     "createDate": {
       "type": "date",
       "defaultFn": "now"
+    },
+    "deleted": {
+      "type": "boolean",
+      "defaultFn": false
     }
   },
   "validations": [],

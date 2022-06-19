@@ -1,6 +1,6 @@
 {
   "name": "b2bdevice",
-  "version": "1.0.0",
+  "version": "1.0.11",
   "main": "server/server.js",
   "engines": {
     "node": ">=6"
@@ -29,5 +29,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "b2bdevice"
+  "description": "b2bdevice desc"
 }
