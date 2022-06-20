@@ -14,7 +14,10 @@
     },
     "phone": {
       "type": "string"
-    },    
+    },
+    "options": {
+      "type": "option"
+    },
     "deleted": {
       "type": "boolean",
       "defaultFn": false

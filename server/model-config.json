@@ -43,5 +43,9 @@
   "device": {
     "dataSource": "db",
     "public": true
+  },
+  "option": {
+    "dataSource": null,
+    "public": true
   }
 }

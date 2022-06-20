@@ -40,18 +40,21 @@
       ]
     }
   },
-  "files": {  
+  "files": {
     "loopback#static": [
       {
-        "paths": ["/"],
+        "paths": [
+          "/"
+        ],
         "params": "$!../client/build"
       },
       {
-        "paths": ["*"],
+        "paths": [
+          "*"
+        ],
         "params": "$!../client/build"
       }
     ]
-     
   },
   "final": {
     "loopback#urlNotFound": {}

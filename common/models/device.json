@@ -19,6 +19,9 @@
     "color": {
       "type": "string"
     },
+    "imei": {
+      "type": "string"
+    },
     "price": {
       "type": "number"
     },
@@ -26,9 +29,18 @@
       "type": "date",
       "defaultFn": "now"
     },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "sold",
+        "reversed"
+      ],
+      "default": "open"
+    },
     "deleted": {
       "type": "boolean",
-      "defaultFn": false
+      "default": false
     }
   },
   "validations": [],
