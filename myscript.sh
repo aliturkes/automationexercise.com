@@ -5,3 +5,4 @@ yarn
 cd client
 npm i
 npm run build
+mv build live
