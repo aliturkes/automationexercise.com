@@ -32,7 +32,7 @@ export default function Login() {
       setFormData(initialState)
    };
 
-   useEffect(() => { user?.userId === 1 ? navigate("/admin") : navigate("/company") }, [user])
+   useEffect(() => { user?.userId.lenght > 0 && user?.userId === 1 ? navigate("/admin") : navigate("/company") }, [user])
 
    return (
 
