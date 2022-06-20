@@ -36,7 +36,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, sending: true }
 
     case "PUT_DEVICES_FULFILLED":
-      return { ...state, devices: state.devices.map(item => item._id === payload.data._id ? payload.data : item), sending: false }
+      return { ...state, devices: state.devices.map(item => item.id === payload.data.id ? payload.data : item), sending: false }
 
     case "PUT_DEVICES_REJECTED":
       return { ...state, error: payload.message, sending: false }
@@ -44,7 +44,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
 
     case "DEL_DEVICES_FULFILLED":
-      return { ...state, devices: state.devices.filter(item => item._id !== payload.data._id), error: "" }
+      return { ...state, devices: state.devices.filter(item => item.id !== payload.data.id), error: "" }
 
 
 

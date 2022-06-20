@@ -16,6 +16,10 @@ export default function Login() {
 
    const navigate = useNavigate();
 
+   const store = useSelector(state => state.authReducer)
+
+   const { user, error, loading } = store
+
    const [showPassword, setShowPassword] = useState(false);
 
    const [formData, setFormData] = useState({ email: "", password: "" })
@@ -24,15 +28,11 @@ export default function Login() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(formData);
       dispatch(login(formData))
       setFormData(initialState)
    };
 
-
-   // useEffect(() => { myuser?.page && navigate("/" + myuser?.page) }, [myuser])
-
-
+   useEffect(() => { user?.userId === 1 ? navigate("/admin") : navigate("/company") }, [user])
 
    return (
 

@@ -44,12 +44,12 @@ export default function CompanyDevice() {
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
             console.log(row);
             setDetailShow(true);
-            setDeviceState({ id: row.cells[5].data, brand: row.cells[0].data, model: row.cells[1].data, storage: row.cells[2].data, color: row.cells[3].data, price: row.cells[4].data })
+            setDeviceState({ brand: row.cells[0].data, model: row.cells[1].data, storage: row.cells[2].data, color: row.cells[3].data, price: row.cells[4].data, id: row.cells[5].data })
          }}><BsPencilSquare /></Button>)
       },
    ];
 
- 
+
 
    console.log(deviceState);
 

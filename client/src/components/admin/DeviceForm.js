@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { useDispatch } from 'react-redux'
-import { putDevice, postDevice, delDevice } from '../../store/actions';
+import { putDevices, postDevices, delDevices } from '../../store/actions';
 
 
 
-const initialState = { brand: "", model: "", storage: "", color: "", price: "", id: null }
+const initialState = { company: "", brand: "", model: "", storage: "", color: "", price: "", id: null, userId: 1 }
 
 
-export default function CompanyForm(props) {
+export default function DeviceForm(props) {
 
 
    const { devicestate } = props
@@ -23,16 +23,19 @@ export default function CompanyForm(props) {
       e.preventDefault();
 
       if (devicestate) {
-         dispatch(putDevice(formData))
+         delete formData.company
+         dispatch(putDevices(formData))
 
       } else {
-         dispatch(postDevice(formData))
+         dispatch(postDevices(formData))
          setFormData(initialState)
       }
+      console.log(formData)
    }
 
-   useEffect(() => setFormData(devicestate ? devicestate : initialState), [devicestate])
+   useEffect(() => setFormData(devicestate ? { ...devicestate } : initialState), [devicestate])
 
+   console.log(devicestate);
 
 
    return (
@@ -49,12 +52,16 @@ export default function CompanyForm(props) {
 
             <Form onSubmit={handleSubmit}>
 
-
                <Row className='align-items-end'>
+
+                  <Form.Group controlId="deviceCompany" className="mb-3">
+                     <Form.Label>Firma</Form.Label>
+                     <Form.Control name="company" type="text" maxLength="50" onChange={onInputChange} value={formData.company} autoFocus />
+                  </Form.Group>
 
                   <Form.Group controlId="deviceBrand" className="mb-3">
                      <Form.Label>Marka</Form.Label>
-                     <Form.Control name="brand" type="text" maxLength="50" onChange={onInputChange} value={formData.brand} autoFocus />
+                     <Form.Control name="brand" type="text" maxLength="50" onChange={onInputChange} value={formData.brand} />
                   </Form.Group>
 
                   <Form.Group controlId="deviceModel" className="mb-3">
@@ -88,7 +95,7 @@ export default function CompanyForm(props) {
 
                <Col className="d-flex justify-content-end mt-2 gap-2">
 
-                  <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delDevice(devicestate.id), props.onHide())} style={{ display: !devicestate && "none" }}>Sil</Button>
+                  <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delDevices(devicestate.id), props.onHide())} style={{ display: !devicestate && "none" }}>Sil</Button>
 
                   <Button variant="outline-secondary from-btn" type="button" onClick={() => { setFormData(devicestate ? devicestate : initialState); props.onHide() }}>Vazgeç</Button>
 

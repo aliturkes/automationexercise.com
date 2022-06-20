@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusLg, BsPencilSquare } from 'react-icons/bs'
 import { Grid, _ } from "gridjs-react";
-// import DealerForm from './DealerForm';
+import DeviceForm from './DeviceForm';
 import { getDevices } from '../../store/actions';
 
 
@@ -45,12 +45,13 @@ export default function DeviceList() {
       { id: "color", name: "Renk", width: "100%" },
       { id: "price", name: "Fiyat", width: "100%" },
       { id: "id", name: "id", hidden: true },
+      { id: "userId", name: "userId", hidden: true },
       {
          id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
-            // console.log(row);
+            console.log(row);
             setDetailShow(true);
-            setDeviceState({ id: row.cells[5].data, company: row.cells[0].data, brand: row.cells[1].data, model: row.cells[2].data, storage: row.cells[3].data, color: row.cells[4].data, price: row.cells[5].data })
+            setDeviceState({ company: row.cells[0].data, brand: row.cells[1].data, model: row.cells[2].data, storage: row.cells[3].data, color: row.cells[4].data, price: row.cells[5].data, id: row.cells[6].data, userId: row.cells[7].data })
          }}><BsPencilSquare /></Button>)
       },
    ];
@@ -93,7 +94,7 @@ export default function DeviceList() {
          />
 
 
-         {/* <DealerForm show={detailShow} onHide={() => setDetailShow(false)} deviceState={deviceState} /> */}
+         <DeviceForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} />
 
          {loading && <div className="loading"><div className="spinner"></div></div>}
 

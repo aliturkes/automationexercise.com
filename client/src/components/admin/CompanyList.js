@@ -19,7 +19,7 @@ export default function CompanyList() {
 
    const { users, error, loading } = store
 
-   console.log(users);
+   // console.log(users);
 
    useEffect(() => { dispatch(getUsers()) }, [])
 
@@ -48,7 +48,7 @@ export default function CompanyList() {
 
    // data.map(item => item.edit = _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => { /*setDetailShow(true); setRequest(item) */ }}><BsPencilSquare /></Button>))
 
-   console.log(deviceState);
+   // console.log(deviceState);
 
    return (
 
