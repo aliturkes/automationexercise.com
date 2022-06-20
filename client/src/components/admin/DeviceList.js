@@ -56,9 +56,9 @@ export default function DeviceList() {
       },
    ];
 
-   console.log(devices);
+   // console.log(devices);
 
-   console.log(deviceState);
+   // console.log(deviceState);
 
    return (
 

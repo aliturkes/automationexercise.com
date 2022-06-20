@@ -32,7 +32,11 @@ export default function Login() {
       setFormData(initialState)
    };
 
-   useEffect(() => { user?.userId.lenght > 0 && user?.userId === 1 ? navigate("/admin") : navigate("/company") }, [user])
+   const token = JSON.parse(localStorage.getItem('token'))
+
+   console.log(user.userId);
+
+   useEffect(() => { user?.userId ? (user?.userId === 1) ? navigate("/admin") : navigate("/company") : navigate("/") }, [user])
 
    return (
 

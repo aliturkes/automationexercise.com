@@ -14,17 +14,24 @@ const users = "/users"
 
 
 
+// #region ---------------------------- TOKEN --------------------------------//
+
+
 const token = () => {
-   const { id } = JSON.parse(localStorage.getItem('token'));
+   const id = JSON.parse(localStorage.getItem('token'))?.id;
    // console.log(id);
    return id;
 }
 
 const userId = () => {
-   const { userId } = JSON.parse(localStorage.getItem('token'));
+   const userId = JSON.parse(localStorage.getItem('token'))?.userId;
    // console.log(userId);
    return "/" + userId;
 }
+
+
+// #endregion
+
 
 
 // #region ---------------------------- AUTH --------------------------------//
@@ -55,7 +62,9 @@ export function register(data) {
 
 
 export function logout() {
-   localStorage.removeItem("token");
+   
+   setTimeout(() => { localStorage.removeItem("token"); }, 1000);
+
    return dispatch => {
       dispatch({
          type: "LOGOUT",
@@ -169,10 +178,12 @@ export function delUsers(id) {
 // https://b2bdevice.tk/api/users/1/devices?access_token=548OWrq1q9QXrbiYLB4FbiV80CcbqfOGtdpKzRgdwL7FyEwMXj8ICXwwR6Cf8O3l
 
 export function getDevice() {
+
    return dispatch => {
+      let query = { where: { or: [{ deleted: null }, { deleted: false }] } }
       dispatch({
          type: "GET_DEVICE",
-         payload: API.get(users + userId() + devices + "?access_token=" + token())
+         payload: API.get(users + userId() + devices + "?access_token=" + token() + "&filter=" + JSON.stringify(query))
       })
    }
 }
@@ -203,7 +214,7 @@ export function delDevice(id) {
    return dispatch => {
       dispatch({
          type: "DEL_DEVICE",
-         payload: API.delete(users + userId() + devices + "/" + id + "?access_token=" + token())
+         payload: API.put(users + userId() + devices + "/" + id + "?access_token=" + token(), { deleted: true })
       }).then(res => { console.log(res) })
    }
 }

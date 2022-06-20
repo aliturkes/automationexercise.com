@@ -40,7 +40,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
 
 
-      case "LOGOUT":
+      case "LOGOUT_FULFILLED":
+         return { sending: false, isAuthenticated: false, message: "", user: {}, error: "" }
+
+      case "LOGOUT_REJECTED":
          return { sending: false, isAuthenticated: false, message: "", user: {}, error: "" }
 
 

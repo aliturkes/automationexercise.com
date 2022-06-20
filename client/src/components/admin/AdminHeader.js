@@ -36,7 +36,7 @@ export default function AdminHeader() {
 								<Dropdown.Item href="#">Şifre Değiştir</Dropdown.Item>
 								<Dropdown.Item href="#">Hesabı Sil</Dropdown.Item>
 								<Dropdown.Divider />
-								<Dropdown.Item as="button" onClick={() => { dispatch(logout()); navigate("/") }}>Çıkış Yap</Dropdown.Item>
+								<Dropdown.Item as="button" onClick={() => { navigate("/"); dispatch(logout()); }}>Çıkış Yap</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown>
 

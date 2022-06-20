@@ -45,7 +45,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
 
     case "DEL_DEVICE_FULFILLED":
-      return { ...state, device: state.device.filter(item => item.id !== payload.id), error: "" }
+      return { ...state, device: state.device.filter(item => item.id !== payload.data.id), error: "" }
 
 
     default:
