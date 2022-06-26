@@ -37,7 +37,7 @@ export default function CompanyDevice() {
       { id: "model", name: "Model", width: "100%" },
       { id: "storage", name: "Hafıza", width: "100%" },
       { id: "color", name: "Renk", width: "100%" },
-      { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _(cell + "₺") },
+      { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString())},
       { id: "id", name: "id", hidden: true },
       {
          id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,

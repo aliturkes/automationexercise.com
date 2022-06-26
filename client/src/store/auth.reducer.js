@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
    sending: false,
    isAuthenticated: false,
-   user: {},
+   token: {},
    message: "",
    error: "",
 }
@@ -31,7 +31,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
          return { ...state, sending: true }
 
       case "POST_LOGIN_FULFILLED":
-         return { ...state, user: payload.data, isAuthenticated: true, error: "", sending: false }
+         return { ...state, token: payload.data, isAuthenticated: true, error: "", sending: false }
 
       case "POST_LOGIN_REJECTED":
          return { ...state, error: payload.message, sending: false }
@@ -41,10 +41,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
 
       case "LOGOUT_FULFILLED":
-         return { sending: false, isAuthenticated: false, message: "", user: {}, error: "" }
+         return { sending: false, isAuthenticated: false, message: "", token: {}, error: "" }
 
       case "LOGOUT_REJECTED":
-         return { sending: false, isAuthenticated: false, message: "", user: {}, error: "" }
+         return { sending: false, isAuthenticated: false, message: "", token: {}, error: "" }
 
 
       // #endregion

@@ -34,16 +34,13 @@ export default function DeviceList() {
 
    const data = [...devices]
 
-   data.map(item => item.company = item.user.company)
-
-
    const columns = [
-      { id: "company", name: "Firma", width: "100%" },
+      { id: "user", name: "Firma", width: "100%", formatter: (cell) => _(cell.company) },
       { id: "brand", name: "Marka", width: "100%" },
       { id: "model", name: "Model", width: "100%" },
       { id: "storage", name: "Hafıza", width: "100%" },
       { id: "color", name: "Renk", width: "100%" },
-      { id: "price", name: "Fiyat", width: "100%" },
+      { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString()) },
       { id: "id", name: "id", hidden: true },
       { id: "userId", name: "userId", hidden: true },
       {
@@ -51,7 +48,7 @@ export default function DeviceList() {
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
             console.log(row);
             setDetailShow(true);
-            setDeviceState({ company: row.cells[0].data, brand: row.cells[1].data, model: row.cells[2].data, storage: row.cells[3].data, color: row.cells[4].data, price: row.cells[5].data, id: row.cells[6].data, userId: row.cells[7].data })
+            setDeviceState({ company: row.cells[0].data.company, brand: row.cells[1].data, model: row.cells[2].data, storage: row.cells[3].data, color: row.cells[4].data, price: row.cells[5].data, id: row.cells[6].data, userId: row.cells[7].data })
          }}><BsPencilSquare /></Button>)
       },
    ];

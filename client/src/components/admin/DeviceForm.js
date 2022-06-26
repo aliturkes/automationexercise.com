@@ -35,7 +35,6 @@ export default function DeviceForm(props) {
 
    useEffect(() => setFormData(devicestate ? { ...devicestate } : initialState), [devicestate])
 
-   console.log(devicestate);
 
 
    return (
@@ -56,7 +55,7 @@ export default function DeviceForm(props) {
 
                   <Form.Group controlId="deviceCompany" className="mb-3">
                      <Form.Label>Firma</Form.Label>
-                     <Form.Control name="company" type="text" maxLength="50" onChange={onInputChange} value={formData.company} autoFocus />
+                     <Form.Control name="company" type="text" maxLength="50" onChange={onInputChange} value={formData.company} readOnly />
                   </Form.Group>
 
                   <Form.Group controlId="deviceBrand" className="mb-3">

@@ -9,7 +9,7 @@ export default function Header() {
 
 	return (
 		<Navbar className="p-0 bg-dark">
-			<Container>
+			<Container className="justify-content-center">
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 

@@ -18,25 +18,23 @@ export default function Login() {
 
    const store = useSelector(state => state.authReducer)
 
-   const { user, error, loading } = store
+   const { isAuthenticated, token, error, sending } = store
 
    const [showPassword, setShowPassword] = useState(false);
 
    const [formData, setFormData] = useState({ email: "", password: "" })
+
+   useEffect(() => { isAuthenticated ? token?.userId === 1 ? navigate("/admin") : navigate("/company") : navigate("/") }, [token])
 
    const onInputChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }) }
 
    const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(login(formData))
-      setFormData(initialState)
+
    };
 
-   const token = JSON.parse(localStorage.getItem('token'))
 
-   console.log(user.userId);
-
-   useEffect(() => { user?.userId ? (user?.userId === 1) ? navigate("/admin") : navigate("/company") : navigate("/") }, [user])
 
    return (
 
@@ -59,15 +57,15 @@ export default function Login() {
                   <Form onSubmit={handleSubmit}>
 
                      <Form.Group className="mb-3" controlId="email">
-                        <Form.Control name="email" type="email" placeholder="Email" className="bg-light py-2" size='lg' onChange={onInputChange} value={formData.email} required />
+                        <Form.Control name="email" type="email" placeholder="Email" className="bg-light py-2" size='lg' onChange={onInputChange} value={formData.email} disabled={sending} required />
                      </Form.Group>
 
                      <Form.Group className="mb-4 show-relative" controlId="password">
                         <span className='show-password text-muted' onClick={() => setShowPassword(!showPassword)} >{showPassword ? <FaRegEyeSlash /> : <FaRegEye />}</span>
-                        <Form.Control name="password" type={showPassword ? "text" : "password"} placeholder="Şifre" className="bg-light py-2" size='lg' onChange={onInputChange} value={formData.password} required />
+                        <Form.Control name="password" type={showPassword ? "text" : "password"} placeholder="Şifre" className="bg-light py-2" size='lg' onChange={onInputChange} value={formData.password} disabled={sending} required />
                      </Form.Group>
 
-                     <Button variant="primary" type='submit' className="mb-4 px-4">Giriş Yap</Button>
+                     <Button variant="primary" type='submit' className="mb-4 px-4" disabled={sending} >Giriş Yap</Button>
 
                   </Form>
 

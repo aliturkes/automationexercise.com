@@ -3,6 +3,9 @@ import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { logout } from '../../store/actions'
+import { BsFillPersonFill } from "react-icons/bs";
+
+
 
 export default function AdminHeader() {
 
@@ -29,12 +32,12 @@ export default function AdminHeader() {
 
 						<Dropdown className="d-inline">
 							<Dropdown.Toggle size="sm" variant="link" className="text-dark p-0">
-								<svg width="24" height="24"><use xlinkHref="/img/icons.svg#person-fill" /></svg>
+								<BsFillPersonFill className="fs-4" />
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align="end">
-								<Dropdown.Item href="#">Şifre Değiştir</Dropdown.Item>
-								<Dropdown.Item href="#">Hesabı Sil</Dropdown.Item>
+								<Dropdown.Item href="#" disabled>Şifre Değiştir</Dropdown.Item>
+								<Dropdown.Item href="#" disabled>Hesabı Sil</Dropdown.Item>
 								<Dropdown.Divider />
 								<Dropdown.Item as="button" onClick={() => { navigate("/"); dispatch(logout()); }}>Çıkış Yap</Dropdown.Item>
 							</Dropdown.Menu>
