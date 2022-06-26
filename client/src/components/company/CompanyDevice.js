@@ -18,11 +18,13 @@ export default function CompanyDevice() {
 
    const dispatch = useDispatch()
 
-   const store = useSelector(state => state.companyReducer)
+   const store = useSelector(state => state)
 
-   const { device, error, loading } = store
+   const { device, error, loading } = store.companyReducer
 
-   useEffect(() => { dispatch(getDevice()) }, [])
+   const { isAuthenticated } = store.authReducer
+
+   useEffect(() => { isAuthenticated && dispatch(getDevice()) }, [])
 
    // useEffect(() => { token_id ? dispatch(getRequest(token_id)) : navigate("/") }, [token_id])
 
@@ -37,7 +39,7 @@ export default function CompanyDevice() {
       { id: "model", name: "Model", width: "100%" },
       { id: "storage", name: "Hafıza", width: "100%" },
       { id: "color", name: "Renk", width: "100%" },
-      { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString())},
+      { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString()) },
       { id: "id", name: "id", hidden: true },
       {
          id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,

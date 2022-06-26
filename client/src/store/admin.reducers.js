@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, { type, payload }) => {
-  
+
   switch (type) {
 
     case "GET_DEVICES_PENDING":
@@ -48,10 +48,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
 
 
-//--------------------------------- USERS --------------------------------//
+    //--------------------------------- USERS --------------------------------//
 
 
-      case "GET_USERS_PENDING":
+    case "GET_USERS_PENDING":
       return { ...state, loading: true }
 
     case "GET_USERS_FULFILLED":
@@ -88,6 +88,11 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, users: state.users.filter(item => item._id !== payload.data._id), error: "" }
 
 
+    case "LOGOUT_FULFILLED":
+      return { devices: [], users: [], loading: false, sending: false, error: null }
+
+    case "LOGOUT_REJECTED":
+      return { devices: [], users: [], loading: false, sending: false, error: null }
 
 
     default:

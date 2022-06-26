@@ -18,15 +18,14 @@ export default function DeviceList() {
 
    const dispatch = useDispatch()
 
-   const store = useSelector(state => state.adminReducer)
+   const store = useSelector(state => state)
 
-   const { devices, error, loading } = store
+   const { devices, error, loading } = store.adminReducer
 
-   // const token_id = JSON.parse(localStorage.getItem('token')).id;
+   const { isAuthenticated } = store.authReducer
 
-   useEffect(() => { dispatch(getDevices()) }, [])
+   useEffect(() => { isAuthenticated && dispatch(getDevices()) }, [])
 
-   // useEffect(() => { token_id ? dispatch(getDevices()) : navigate("/") }, [token_id])
 
    const [detailShow, setDetailShow] = useState(false);
 

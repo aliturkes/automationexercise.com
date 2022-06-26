@@ -3,7 +3,6 @@ const INITIAL_STATE = {
   loading: false,
   sending: false,
   error: null,
-
 }
 
 export default (state = INITIAL_STATE, { type, payload }) => {
@@ -46,6 +45,13 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     case "DEL_DEVICE_FULFILLED":
       return { ...state, device: state.device.filter(item => item.id !== payload.data.id), error: "" }
+
+
+    case "LOGOUT_FULFILLED":
+      return { device: [], loading: false, sending: false, error: null }
+
+      case "LOGOUT_REJECTED":
+        return { device: [], loading: false, sending: false, error: null }
 
 
     default:

@@ -47,7 +47,7 @@ export default function CompanyForm(props) {
             </Modal.Title>
          </Modal.Header>
 
-         <Modal.Body className="m-3">
+         <Modal.Body className="m-md-3">
 
 
             <Form onSubmit={handleSubmit}>

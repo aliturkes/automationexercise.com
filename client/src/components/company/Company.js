@@ -4,20 +4,23 @@ import Footer from '../Footer'
 import DealerDevice from './CompanyDevice'
 import DealerHeader from './CompanyHeader'
 import "gridjs/dist/theme/mermaid.css";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { logout } from '../../store/actions'
+
 
 
 export default function Company() {
 
+   const dispatch = useDispatch()
 
    const navigate = useNavigate()
 
-   const store = useSelector(state => state.authReducer)
+   const isAuthenticated = useSelector(state => state?.authReducer?.isAuthenticated)
 
-   useEffect(() => { !store.isAuthenticated && navigate("/") }, [store])
+   useEffect(() => { !isAuthenticated && navigate("/") }, [isAuthenticated])
 
-   console.log(store);
+
    return (
       <div>
          <DealerHeader />

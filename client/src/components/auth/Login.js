@@ -16,9 +16,10 @@ export default function Login() {
 
    const navigate = useNavigate();
 
-   const store = useSelector(state => state.authReducer)
+   const store = useSelector(state => state)
 
-   const { isAuthenticated, token, error, sending } = store
+   const { isAuthenticated, token, error, sending } = store.authReducer
+
 
    const [showPassword, setShowPassword] = useState(false);
 

@@ -15,19 +15,21 @@ export default function CompanyList() {
 
    const dispatch = useDispatch()
 
-   const store = useSelector(state => state.adminReducer)
+   const store = useSelector(state => state)
 
-   const { users, error, loading } = store
+   const { users, error, loading } = store.adminReducer
 
-   // console.log(users);
+   const { isAuthenticated } = store.authReducer
 
-   useEffect(() => { dispatch(getUsers()) }, [])
+   useEffect(() => { isAuthenticated && dispatch(getUsers()) }, [])
 
    const [detailShow, setDetailShow] = useState(false);
 
    const [deviceState, setDeviceState] = useState(null);
 
    const data = [...users]
+
+   // console.log(users);
 
    const columns = [
       { id: "company", name: 'Firma', width: "100%" },

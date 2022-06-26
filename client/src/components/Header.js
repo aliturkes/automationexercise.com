@@ -3,10 +3,9 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 
+
+
 export default function Header() {
-
-
-
 	return (
 		<Navbar className="p-0 bg-dark">
 			<Container className="justify-content-center">

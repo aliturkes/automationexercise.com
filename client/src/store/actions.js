@@ -62,7 +62,7 @@ export function register(data) {
 
 
 export function logout() {
-   
+
    setTimeout(() => { localStorage.removeItem("token"); }, 1000);
 
    return dispatch => {
@@ -90,7 +90,8 @@ export function getDevices() {
       dispatch({
          type: "GET_DEVICES",
          payload: API.get(devices + "?access_token=" + token() + "&filter=" + JSON.stringify(query))
-      })
+      }).then(res => { console.log(res) })
+         .catch(err => { err.response.status && dispatch(logout()) })
    }
 }
 
@@ -112,7 +113,8 @@ export function putDevices(data) {
       dispatch({
          type: "PUT_DEVICES",
          payload: API.put(devices + "/" + data.id + "?access_token=" + token(), data)
-      })
+      }).then(res => { console.log(res) })
+         .catch(err => { err.response.status && dispatch(logout()) })
    }
 }
 
@@ -139,7 +141,8 @@ export function getUsers() {
       dispatch({
          type: "GET_USERS",
          payload: API.get(users + "?access_token=" + token())
-      })
+      }).then(res => { console.log(res) })
+         .catch(err => { err.response.status && dispatch(logout()) })
    }
 }
 
@@ -184,7 +187,8 @@ export function getDevice() {
       dispatch({
          type: "GET_DEVICE",
          payload: API.get(users + userId() + devices + "?access_token=" + token() + "&filter=" + JSON.stringify(query))
-      })
+      }).then(res => { console.log(res) })
+         .catch(err => { err.response.status && dispatch(logout()) })
    }
 }
 
