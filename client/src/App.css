@@ -40,8 +40,20 @@ body {
 .navbar-nav .nav-link:hover,
 .navbar-nav .active {
   border-bottom: 2px solid gray;
+
 }
 
+
+
+
+a[href^="tel"] {
+  color: #000;
+  text-decoration: none !important;
+}
+
+a[href^="tel"]:hover {
+  color: #000;
+}
 
 
 /* FORM SECTION*/

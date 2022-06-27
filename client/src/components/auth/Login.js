@@ -32,7 +32,6 @@ export default function Login() {
    const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(login(formData))
-
    };
 
 

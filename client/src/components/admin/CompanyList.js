@@ -35,7 +35,7 @@ export default function CompanyList() {
       { id: "company", name: 'Firma', width: "100%" },
       { id: "name", name: 'Adı', width: "100%" },
       { id: 'email', name: 'Email', width: "100%" },
-      { id: 'phone', name: 'Telefon No', width: "100%" },
+      { id: 'phone', name: 'Telefon No', width: "100%", formatter: (cell) => _(<a href={`tel:${cell}`} className="phone">{cell}</a>) },
       { id: "id", name: "id", hidden: true },
       {
          id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,

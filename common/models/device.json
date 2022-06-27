@@ -25,6 +25,15 @@
     "price": {
       "type": "number"
     },
+    "buyPrice": {
+      "type": "number"
+    },
+    "soldPrice": {
+      "type": "number"
+    },
+    "soldWho": {
+      "type": "string"
+    },
     "createDate": {
       "type": "date",
       "defaultFn": "now"

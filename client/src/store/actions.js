@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 export const API = axios.create({
-   baseURL: 'https://b2bdevice.tk/api',
-   //  baseURL: 'http://localhost:5000/api'
+   // baseURL: 'https://b2bdevice.tk/api',
+    baseURL: 'http://localhost:3000/api'
 })
 
 
@@ -19,13 +19,11 @@ const users = "/users"
 
 const token = () => {
    const id = JSON.parse(localStorage.getItem('token'))?.id;
-   // console.log(id);
    return id;
 }
 
 const userId = () => {
    const userId = JSON.parse(localStorage.getItem('token'))?.userId;
-   // console.log(userId);
    return "/" + userId;
 }
 
@@ -43,9 +41,7 @@ export function login(data) {
       dispatch({
          type: "POST_LOGIN",
          payload: API.post(users + "/login", data)
-      }).then(res => {
-         res.value.data.id && localStorage.setItem("token", JSON.stringify(res.value.data))
-      })
+      }).then(res => { res.value.data.id && localStorage.setItem("token", JSON.stringify(res.value.data)) })
    }
 }
 
@@ -85,13 +81,11 @@ export function logout() {
 
 export function getDevices() {
    return dispatch => {
-
       let query = { include: { relation: "user", scope: { fields: ['company'] } } }
       dispatch({
          type: "GET_DEVICES",
          payload: API.get(devices + "?access_token=" + token() + "&filter=" + JSON.stringify(query))
-      }).then(res => { console.log(res) })
-         .catch(err => { err.response.status && dispatch(logout()) })
+      }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
@@ -113,8 +107,7 @@ export function putDevices(data) {
       dispatch({
          type: "PUT_DEVICES",
          payload: API.put(devices + "/" + data.id + "?access_token=" + token(), data)
-      }).then(res => { console.log(res) })
-         .catch(err => { err.response.status && dispatch(logout()) })
+      }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
@@ -141,8 +134,7 @@ export function getUsers() {
       dispatch({
          type: "GET_USERS",
          payload: API.get(users + "?access_token=" + token())
-      }).then(res => { console.log(res) })
-         .catch(err => { err.response.status && dispatch(logout()) })
+      }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
@@ -187,8 +179,7 @@ export function getDevice() {
       dispatch({
          type: "GET_DEVICE",
          payload: API.get(users + userId() + devices + "?access_token=" + token() + "&filter=" + JSON.stringify(query))
-      }).then(res => { console.log(res) })
-         .catch(err => { err.response.status && dispatch(logout()) })
+      }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 

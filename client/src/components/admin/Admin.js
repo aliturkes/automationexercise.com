@@ -8,13 +8,11 @@ import { Route, Routes } from 'react-router-dom'
 import DeviceList from './DeviceList'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { logout } from '../../store/actions'
+
 
 
 
 export default function Admin() {
-
-   const dispatch = useDispatch()
 
    const navigate = useNavigate()
 

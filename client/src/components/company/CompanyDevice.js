@@ -26,9 +26,6 @@ export default function CompanyDevice() {
 
    useEffect(() => { isAuthenticated && dispatch(getDevice()) }, [])
 
-   // useEffect(() => { token_id ? dispatch(getRequest(token_id)) : navigate("/") }, [token_id])
-
-
    const [detailShow, setDetailShow] = useState(false);
 
    const [deviceState, setDeviceState] = useState(null);
@@ -42,7 +39,7 @@ export default function CompanyDevice() {
       { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString()) },
       { id: "id", name: "id", hidden: true },
       {
-         id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,
+         id: "edit", name: _(), sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
             console.log(row);
             setDetailShow(true);
@@ -59,6 +56,10 @@ export default function CompanyDevice() {
    return (
 
       <>
+         <div className='d-flex align-items-center justify-content-between mb-3'>
+            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
+            <span className="display-5 text-muted">Telefon Listesi</span>
+         </div>
 
          <Grid
             pagination={{ limit: 10, summary: false }}
@@ -68,7 +69,6 @@ export default function CompanyDevice() {
             columns={columns}
             data={device}
             fullWidth={true}
-
             language={
                {
                   'search': {

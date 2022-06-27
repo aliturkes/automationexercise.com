@@ -16,7 +16,13 @@
       "type": "string"
     },
     "options": {
-      "type": "option"
+      "type": "option",
+      "default":{
+        "isImei": false,
+        "isBuyPrice": false,
+        "isSoldPrice": false,
+        "isSoldWho": false
+      }
     },
     "deleted": {
       "type": "boolean",
