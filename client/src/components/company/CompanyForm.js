@@ -112,22 +112,22 @@ export default function CompanyForm(props) {
 
 
 
-                  {options.isImei && <Form.Group controlId="deviceImei" className="mb-3">
+                  {options?.isImei && <Form.Group controlId="deviceImei" className="mb-3">
                      <Form.Label>Imei</Form.Label>
                      <Form.Control name="imei" type="string" maxLength="50" onChange={onInputChange} value={formData.imei} />
                   </Form.Group>}
 
-                  {options.isSoldPrice && <Form.Group as={Col} xs="6" controlId="deviceSoldPrice" className="mb-3">
+                  {options?.isSoldPrice && <Form.Group as={Col} xs="6" controlId="deviceSoldPrice" className="mb-3">
                      <Form.Label>Alış Fiyatı</Form.Label>
                      <Form.Control name="soldPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.soldPrice} />
                   </Form.Group>}
 
-                  {options.isBuyPrice && <Form.Group as={Col} xs="6" controlId="deviceBuyPrice" className="mb-3">
+                  {options?.isBuyPrice && <Form.Group as={Col} xs="6" controlId="deviceBuyPrice" className="mb-3">
                      <Form.Label>Satış Fiyatı</Form.Label>
                      <Form.Control name="buyPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.buyPrice} />
                   </Form.Group>}
 
-                  {options.isSoldWho && <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
+                  {options?.isSoldWho && <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
                      <Form.Label>Kime Satıldı?</Form.Label>
                      <Form.Control name="soldWho" type="type" maxLength="50" onChange={onInputChange} value={formData.soldWho} />
                   </Form.Group>}
