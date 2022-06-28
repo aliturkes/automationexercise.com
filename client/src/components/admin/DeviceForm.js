@@ -18,24 +18,24 @@ export default function DeviceForm(props) {
 
    const [formData, setFormData] = useState(initialState)
 
+   useEffect(() => setFormData(devicestate ? { ...devicestate } : initialState), [devicestate])
+
    const onInputChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }) }
 
    const handleSubmit = (e) => {
       e.preventDefault();
+      delete formData.company
 
       if (devicestate) {
-         delete formData.company
          dispatch(putDevices(formData))
-
       } else {
          dispatch(postDevices(formData))
          setFormData(initialState)
       }
-      console.log(formData)
    }
 
-   useEffect(() => setFormData(devicestate ? { ...devicestate } : initialState), [devicestate])
 
+   console.log(devicestate)
 
 
    return (
@@ -54,7 +54,7 @@ export default function DeviceForm(props) {
 
                <Row className='align-items-end'>
 
-               <Form.Group controlId="deviceBrand" className="mb-3">
+                  <Form.Group controlId="deviceBrand" className="mb-3">
                      <Form.Label>Marka</Form.Label>
                      <Form.Select name="brand" onChange={onInputChange} value={formData.brand} autoFocus>
                         <option value="" hidden>Please choose...</option>
@@ -62,10 +62,12 @@ export default function DeviceForm(props) {
                      </Form.Select>
                   </Form.Group>
 
+
                   <Form.Group controlId="deviceModel" className="mb-3">
                      <Form.Label>Model</Form.Label>
                      <Form.Control name="model" type="text" maxLength="50" onChange={onInputChange} value={formData.model} />
                   </Form.Group>
+
 
                   <Form.Label>Hafıza</Form.Label>
                   <ButtonGroup className="mb-3">
@@ -77,6 +79,7 @@ export default function DeviceForm(props) {
                      ))}
                   </ButtonGroup>
 
+
                   <Form.Label>Renk</Form.Label>
                   <ButtonGroup className="mb-3">
                      {color.map((item, i) => (
@@ -87,30 +90,36 @@ export default function DeviceForm(props) {
                      ))}
                   </ButtonGroup>
 
+
                   <Form.Group controlId="deviceImei" className="mb-3">
                      <Form.Label>Imei</Form.Label>
                      <Form.Control name="imei" type="string" maxLength="50" onChange={onInputChange} value={formData.imei} />
                   </Form.Group>
+
 
                   <Form.Group as={Col} xs="6" controlId="devicePrice" className="mb-3">
                      <Form.Label>Fiyat</Form.Label>
                      <Form.Control name="price" type="number" maxLength="50" onChange={onInputChange} value={formData.price} />
                   </Form.Group>
 
+
                   <Form.Group as={Col} xs="6" controlId="deviceSoldPrice" className="mb-3">
                      <Form.Label>Alış Fiyatı</Form.Label>
                      <Form.Control name="soldPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.soldPrice} />
                   </Form.Group>
+
 
                   <Form.Group as={Col} xs="6" controlId="deviceBuyPrice" className="mb-3">
                      <Form.Label>Satış Fiyatı</Form.Label>
                      <Form.Control name="buyPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.buyPrice} />
                   </Form.Group>
 
+
                   <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
                      <Form.Label>Kime Satıldı?</Form.Label>
                      <Form.Control name="soldWho" type="type" maxLength="50" onChange={onInputChange} value={formData.soldWho} />
                   </Form.Group>
+
 
                   <Form.Group controlId="deviceStatus" className="mb-3">
                      <Form.Check name="status" type="switch" id="custom-switch" label="Satıldı" />
@@ -143,4 +152,3 @@ export default function DeviceForm(props) {
       </Modal >
    )
 }
-

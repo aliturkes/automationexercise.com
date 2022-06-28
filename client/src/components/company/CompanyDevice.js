@@ -38,16 +38,32 @@ export default function CompanyDevice() {
       { id: "color", name: "Renk", width: "100%" },
       { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString()) },
       { id: "id", name: "id", hidden: true },
+      { id: "buyPrice", name: "buyPrice", hidden: true },
+      { id: "imei", name: "imei", hidden: true },
+      { id: "soldPrice", name: "soldPrice", hidden: true },
+      { id: "soldWho", name: "soldWho", hidden: true },
+      { id: "status", name: "status", hidden: true },
       {
          id: "edit", name: "", sort: false,
-         formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
-            // console.log(row);
-            setDetailShow(true);
-            setDeviceState({ brand: row.cells[0].data, model: row.cells[1].data, storage: row.cells[2].data, color: row.cells[3].data, price: row.cells[4].data, id: row.cells[5].data })
-         }}><BsPencilSquare /></Button>)
-      },
-   ];
-
+         formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary'
+            onClick={() => { // console.log(row)
+               setDetailShow(true)
+               setDeviceState({
+                  brand: row.cells[0].data,
+                  model: row.cells[1].data,
+                  storage: row.cells[2].data,
+                  color: row.cells[3].data,
+                  price: row.cells[4].data,
+                  id: row.cells[5].data,
+                  buyPrice: row?.cells[6]?.data,
+                  imei: row?.cells[7]?.data,
+                  soldPrice: row?.cells[8]?.data,
+                  soldWho: row?.cells[9]?.data,
+                  status: row?.cells[10]?.data,
+               })
+            }}><BsPencilSquare /></Button>)
+      }
+   ]
 
 
    // console.log(deviceState);
@@ -61,31 +77,19 @@ export default function CompanyDevice() {
             <span className="display-5 text-muted">Telefon Listesi</span>
          </div>
 
-         <Grid
-            pagination={{ limit: 10, summary: false }}
-            search={true}
-            sort={true}
-            // resizable={true}
-            columns={columns}
-            data={device}
-            fullWidth={true}
-            language={
-               {
-                  'search': {
-                     'placeholder': 'Arama...'
-                  },
-                  'pagination': {
-                     'previous': '<',
-                     'next': '>',
-                  },
-                  "loading": 'Bekleniyor...',
-                  "noRecordsFound": 'Gösterilecek kayıt yok',
-                  "error": 'Veriler alınırken bir hata oluştu',
-               }
-            }
-            className={{
-               paginationButtonNext: 'next-button',
-               paginationButtonPrev: 'prev-button'
+         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} columns={columns} data={device} fullWidth={true}
+            className={{ paginationButtonNext: 'next-button', paginationButtonPrev: 'prev-button' }}
+            language={{
+               'search': {
+                  'placeholder': 'Arama...'
+               },
+               'pagination': {
+                  'previous': '<',
+                  'next': '>',
+               },
+               "loading": 'Bekleniyor...',
+               "noRecordsFound": 'Gösterilecek kayıt yok',
+               "error": 'Veriler alınırken bir hata oluştu',
             }}
          />
 

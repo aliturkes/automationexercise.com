@@ -34,7 +34,7 @@ export default function AdminHeader() {
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align="end">
-								<Dropdown.Item href="#" disabled>Şifre Değiştir</Dropdown.Item>
+								<Dropdown.Item href="/change-password">Şifre Değiştir</Dropdown.Item>
 								{/* <Dropdown.Item href="#" disabled>Hesabı Sil</Dropdown.Item> */}
 								<Dropdown.Divider />
 								<Dropdown.Item as="button" onClick={() => { navigate("/"); dispatch(logout()); }}>Çıkış Yap</Dropdown.Item>

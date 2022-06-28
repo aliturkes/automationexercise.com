@@ -14,26 +14,26 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
       // #region --------------------------- REGISTER ------------------------------ //
 
-      case "POST_REGISTER_PENDING":
+      case "REGISTER_PENDING":
          return { ...state, sending: true }
 
-      case "POST_REGISTER_FULFILLED":
+      case "REGISTER_FULFILLED":
          return { ...state, message: payload.data.message, error: "", sending: false }
 
-      case "POST_REGISTER_REJECTED":
+      case "REGISTER_REJECTED":
          return { ...state, error: payload.message, sending: false }
 
 
 
       // #region ---------------------------- LOGIN -------------------------------- //
 
-      case "POST_LOGIN_PENDING":
+      case "LOGIN_PENDING":
          return { ...state, sending: true }
 
-      case "POST_LOGIN_FULFILLED":
+      case "LOGIN_FULFILLED":
          return { ...state, token: payload.data, isAuthenticated: true, error: "", sending: false }
 
-      case "POST_LOGIN_REJECTED":
+      case "LOGIN_REJECTED":
          return { ...state, error: payload.message, sending: false }
 
       // #endregion

@@ -14,7 +14,8 @@ export default function CompanyHeader() {
 
 	const navigate = useNavigate()
 
-	const company = useSelector(state => state.authReducer?.user?.user?.company)
+	const company = useSelector(state => state.authReducer?.token?.user?.company)
+
 
 	return (
 		<Navbar>
@@ -35,7 +36,7 @@ export default function CompanyHeader() {
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align="end">
-								<Dropdown.Item href="#" disabled>Şifre Değiştir</Dropdown.Item>
+								<Dropdown.Item href="/change-password">Şifre Değiştir</Dropdown.Item>
 								{/* <Dropdown.Item href="#" disabled>Hesabı Sil</Dropdown.Item> */}
 								<Dropdown.Divider />
 								<Dropdown.Item as="button" onClick={() => { navigate("/"); dispatch(logout()); }}>Çıkış Yap</Dropdown.Item>

@@ -10,7 +10,7 @@ import "./auth.css";
 
 const initialState = { company: "", name: "", email: "", phone: "", password: "" }
 
-const initialValid = { valid: false, password_confirm: "", terms: false, reCap: false }
+const initialValid = { valid: false, passwordConfirm: "", terms: false }
 
 
 
@@ -36,14 +36,12 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formData.password === validated.password_confirm) {
+    if (formData.password === validated.passwordConfirm) {
 
       dispatch(register(formData))
       setFormData(initialState)
       setValidated(initialValid)
     }
-
-
   };
 
 
@@ -95,14 +93,14 @@ export default function Register() {
 
               <Form.Group controlId="personPassword" className="mb-3">
                 <Form.Control name="password" type="password" minLength="6" maxLength="20" placeholder="Şifre" size='lg'
-                  className={`bg-light py-2` + (validated.valid ? ((formData.password === validated.password_confirm) && formData.password !== "" ? " is-valid" : " is-invalid") : "")}
+                  className={`bg-light py-2` + (validated.valid ? ((formData.password === validated.passwordConfirm) && formData.password !== "" ? " is-valid" : " is-invalid") : "")}
                   onChange={onInputChange} value={formData.password} required />
               </Form.Group>
 
               <Form.Group controlId="personRePassword" className="mb-3">
-                <Form.Control name="password_confirm" type="password" minLength="6" maxLength="20" placeholder="Şifre Tekrar" size='lg'
-                  className={`bg-light py-2` + (validated.valid ? ((formData.password === validated.password_confirm) && validated.password_confirm !== "" ? " is-valid" : " is-invalid") : "")}
-                  onChange={(e) => setValidated({ ...validated, password_confirm: e.target.value })} value={validated.password_confirm} required />
+                <Form.Control name="passwordConfirm" type="password" minLength="6" maxLength="20" placeholder="Şifre Tekrar" size='lg'
+                  className={`bg-light py-2` + (validated.valid ? ((formData.password === validated.passwordConfirm) && validated.passwordConfirm !== "" ? " is-valid" : " is-invalid") : "")}
+                  onChange={(e) => setValidated({ ...validated, passwordConfirm: e.target.value })} value={validated.passwordConfirm} required />
               </Form.Group>
 
               <Form.Check type="checkbox" id="personCheckbox" className="text-start mb-4">

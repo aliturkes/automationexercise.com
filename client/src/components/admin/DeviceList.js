@@ -21,7 +21,7 @@ export default function DeviceList() {
 
    const { devices, error, loading } = store.adminReducer
 
-   const { isAuthenticated,token } = store.authReducer
+   const { isAuthenticated, token } = store.authReducer
 
    useEffect(() => { isAuthenticated && dispatch(getDevices(token)) }, [token.id])
 
@@ -34,7 +34,7 @@ export default function DeviceList() {
    const data = [...devices]
 
    const columns = [
-      { id: "user", name: "Firma", width: "100%", formatter: (cell) => _(cell.company) },
+      { id: "user", name: "Firma", width: "100%", formatter: (cell) => _(cell?.company) },
       { id: "brand", name: "Marka", width: "100%" },
       { id: "model", name: "Model", width: "100%" },
       { id: "storage", name: "Hafıza", width: "100%" },
@@ -42,13 +42,32 @@ export default function DeviceList() {
       { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString()) },
       { id: "id", name: "id", hidden: true },
       { id: "userId", name: "userId", hidden: true },
+      { id: "buyPrice", name: "buyPrice", hidden: true },
+      { id: "imei", name: "imei", hidden: true },
+      { id: "soldPrice", name: "soldPrice", hidden: true },
+      { id: "soldWho", name: "soldWho", hidden: true },
+      { id: "status", name: "status", hidden: true },
       {
          id: "edit", name: "", sort: false,
-         formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
-            console.log(row);
-            setDetailShow(true);
-            setDeviceState({ company: row.cells[0].data.company, brand: row.cells[1].data, model: row.cells[2].data, storage: row.cells[3].data, color: row.cells[4].data, price: row.cells[5].data, id: row.cells[6].data, userId: row.cells[7].data })
-         }}><BsPencilSquare /></Button>)
+         formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary'
+            onClick={() => { console.log(row)
+               setDetailShow(true)
+               setDeviceState({
+                  company: row?.cells[0]?.data?.company,
+                  brand: row.cells[1].data,
+                  model: row.cells[2].data,
+                  storage: row.cells[3].data,
+                  color: row.cells[4].data,
+                  price: row.cells[5].data,
+                  id: row.cells[6].data,
+                  userId: row.cells[7].data,
+                  buyPrice: row?.cells[8]?.data,
+                  imei: row?.cells[9]?.data,
+                  soldPrice: row?.cells[10]?.data,
+                  soldWho: row?.cells[11]?.data,
+                  status: row?.cells[12]?.data,
+               })
+            }}><BsPencilSquare /></Button>)
       },
    ];
 
@@ -57,49 +76,32 @@ export default function DeviceList() {
    // console.log(deviceState);
 
    return (
-
       <>
-
          <div className='d-flex align-items-center justify-content-between mb-3'>
             <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
             <span className="display-5 text-muted">Bayi Telefon Listesi</span>
-         </div> 
+         </div>
 
-         <Grid
-            pagination={{ limit: 10, summary: false }}
-            search={true}
-            sort={true}
-            // resizable={true}
-            columns={columns}
-            data={data}
-            fullWidth={true}
-            language={
-               {
-                  'search': {
-                     'placeholder': 'Arama...'
-                  },
-                  'pagination': {
-                     'previous': '<',
-                     'next': '>',
-                  },
-                  "loading": 'Bekleniyor...',
-                  "noRecordsFound": 'Gösterilecek kayıt yok',
-                  "error": 'Veriler alınırken bir hata oluştu',
-               }
-            }
-            className={{
-               paginationButtonNext: 'next-button',
-               paginationButtonPrev: 'prev-button'
+         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} columns={columns} data={data} fullWidth={true}
+            className={{ paginationButtonNext: 'next-button', paginationButtonPrev: 'prev-button' }}
+            language={{
+               'search': {
+                  'placeholder': 'Arama...'
+               },
+               'pagination': {
+                  'previous': '<',
+                  'next': '>',
+               },
+               "loading": 'Bekleniyor...',
+               "noRecordsFound": 'Gösterilecek kayıt yok',
+               "error": 'Veriler alınırken bir hata oluştu',
             }}
          />
-
 
          <DeviceForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} />
 
          {loading && <div className="loading"><div className="spinner"></div></div>}
 
-
       </>
    )
 }
-

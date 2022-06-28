@@ -7,20 +7,20 @@ import Company from './components/company/Company';
 import Header from './components/Header';
 import PasswordReset from './components/auth/PasswordReset';
 import './App.css';
-
+import PasswordChange from './components/auth/PasswordChange';
 
 
 
 export default function App() {
   return (
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
 
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="signin" element={<Login />} />
           <Route path="signup" element={<Register />} />
-          <Route path="password-forgot" element={<PasswordReset />} />
+          <Route path="reset-password" element={<PasswordReset />} />
+          <Route path="change-password" element={<PasswordChange />} />
 
           <Route path="admin/*" element={<Admin />} />
           <Route path="company/*" element={<Company />} />

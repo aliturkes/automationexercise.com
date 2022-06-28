@@ -25,7 +25,7 @@ export default function Login() {
 
    const [formData, setFormData] = useState({ email: "", password: "" })
 
-   useEffect(() => { isAuthenticated ? token?.userId === 1 ? navigate("/admin") : navigate("/company") : navigate("/") }, [token])
+   useEffect(() => { isAuthenticated ? (token?.userId === 1 || token?.userId === 2) ? navigate("/admin") : navigate("/company") : navigate("/") }, [token])
 
    const onInputChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }) }
 
@@ -69,7 +69,7 @@ export default function Login() {
 
                   </Form>
 
-                  {/* <p className="mb-1"><Link to="/password-forgot" className="text-muted small">Şifre mi unuttum</Link></p> */}
+                  <p className="mb-1"><Link to="/reset-password" className="text-muted small">Şifremi unuttum</Link></p>
                   <p className="mb-4"><Link to="/signup" className="text-muted small">Hesabınız yok mu?</Link></p>
 
                </Card.Body>

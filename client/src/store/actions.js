@@ -8,6 +8,8 @@ export const API = axios.create({
 
 const devices = "/devices"
 const users = "/users"
+const reset = "/reset-password"
+const change = "/change-password"
 
 
 // https://b2bdevice.tk/api/devices?access_token=548OWrq1q9QXrbiYLB4FbiV80CcbqfOGtdpKzRgdwL7FyEwMXj8ICXwwR6Cf8O3l
@@ -31,7 +33,7 @@ const token = () => JSON.parse(JSON.parse(localStorage.getItem('persist:root'))?
 export function login(data) {
    return dispatch => {
       dispatch({
-         type: "POST_LOGIN",
+         type: "LOGIN",
          payload: API.post(users + "/login", data)
       })
    }
@@ -42,7 +44,7 @@ export function login(data) {
 export function register(data) {
    return dispatch => {
       dispatch({
-         type: "POST_REGISTER",
+         type: "REGISTER",
          payload: API.post(users, data)
       })
    }
@@ -57,6 +59,27 @@ export function logout() {
       dispatch({
          type: "LOGOUT",
          payload: API.post(users + "/logout" + "?access_token=" + token().id)
+      })
+   }
+}
+
+
+export function changePassword(data) {
+   return dispatch => {
+      dispatch({
+         type: "CHANGE_PASSWORD",
+         payload: API.post(users + change, data)
+      })
+   }
+}
+
+
+
+export function resetPassword(data) {
+   return dispatch => {
+      dispatch({
+         type: "RESET_PASSWORD",
+         payload: API.post(users + reset, data)
       })
    }
 }
@@ -170,7 +193,7 @@ export function getDevice(token) {
       let query = { where: { or: [{ deleted: null }, { deleted: false }] } }
       dispatch({
          type: "GET_DEVICE",
-         payload: API.get(users +"/"+ token.userId + devices + "?access_token=" + token.id + "&filter=" + JSON.stringify(query))
+         payload: API.get(users + "/" + token.userId + devices + "?access_token=" + token.id + "&filter=" + JSON.stringify(query))
       }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
@@ -180,7 +203,7 @@ export function postDevice(data) {
    return dispatch => {
       dispatch({
          type: "POST_DEVICE",
-         payload: API.post(users + token().userId + devices + "?access_token=" + token().id, data)
+         payload: API.post(users + "/" + token().userId + devices + "?access_token=" + token().id, data)
       })
    }
 }
@@ -191,7 +214,7 @@ export function putDevice(data) {
    return dispatch => {
       dispatch({
          type: "PUT_DEVICE",
-         payload: API.put(users + token().userId + devices + "/" + data.id + "?access_token=" + token().id, data)
+         payload: API.put(users + "/" + token().userId + devices + "/" + data.id + "?access_token=" + token().id, data)
       })
    }
 }
@@ -201,7 +224,7 @@ export function delDevice(id) {
    return dispatch => {
       dispatch({
          type: "DEL_DEVICE",
-         payload: API.put(users + token().userId + devices + "/" + id + "?access_token=" + token().id, { deleted: true })
+         payload: API.put(users + "/" + token().userId + devices + "/" + id + "?access_token=" + token().id, { deleted: true })
       }).then(res => { console.log(res) })
    }
 }
