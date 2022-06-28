@@ -35,7 +35,7 @@ export function login(data) {
       dispatch({
          type: "LOGIN",
          payload: API.post(users + "/login", data)
-      })
+      }).catch(err => {console.log(err.response.data.error.message)})
    }
 }
 
@@ -80,6 +80,19 @@ export function resetPassword(data) {
       dispatch({
          type: "RESET_PASSWORD",
          payload: API.post(users + reset, data)
+      })
+   }
+}
+
+
+export function clear() {
+
+   setTimeout(() => { localStorage.removeItem("persist:root"); }, 1000);
+
+   return dispatch => {
+      dispatch({
+         type: "CLEAR",
+         payload: ""
       })
    }
 }

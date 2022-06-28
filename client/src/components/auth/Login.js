@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Card } from 'react-bootstrap';
 import { FaRegEye, FaRegEyeSlash, FaUnlock } from "react-icons/fa";
 import Background from './Background';
-import { login } from '../../store/actions'
+import { login, clear } from '../../store/actions'
 
 
 const initialState = { email: "", password: "" }
@@ -20,10 +20,11 @@ export default function Login() {
 
    const { isAuthenticated, token, error, sending } = store.authReducer
 
-
    const [showPassword, setShowPassword] = useState(false);
 
    const [formData, setFormData] = useState({ email: "", password: "" })
+
+   useEffect(() => { dispatch(clear()) }, [])
 
    useEffect(() => { isAuthenticated ? (token?.userId === 1 || token?.userId === 2) ? navigate("/admin") : navigate("/company") : navigate("/") }, [token])
 
@@ -64,6 +65,7 @@ export default function Login() {
                         <span className='show-password text-muted' onClick={() => setShowPassword(!showPassword)} >{showPassword ? <FaRegEyeSlash /> : <FaRegEye />}</span>
                         <Form.Control name="password" type={showPassword ? "text" : "password"} placeholder="Şifre" className="bg-light py-2" size='lg' onChange={onInputChange} value={formData.password} disabled={sending} required />
                      </Form.Group>
+                     {error && <div className="text-danger mb-1">{error}</div>}
 
                      <Button variant="primary" type='submit' className="mb-4 px-4" disabled={sending} >Giriş Yap</Button>
 

@@ -28,13 +28,13 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       // #region ---------------------------- LOGIN -------------------------------- //
 
       case "LOGIN_PENDING":
-         return { ...state, sending: true }
+         return { ...state, error: "", sending: true }
 
       case "LOGIN_FULFILLED":
          return { ...state, token: payload.data, isAuthenticated: true, error: "", sending: false }
 
       case "LOGIN_REJECTED":
-         return { ...state, error: payload.message, sending: false }
+         return { ...state, error: "Kullanıcı adı yada şifre hatalı", sending: false }
 
       // #endregion
 
@@ -43,7 +43,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       case "LOGOUT_FULFILLED":
          return { sending: false, isAuthenticated: false, message: "", token: {}, error: "" }
 
-      case "LOGOUT_REJECTED":
+      case "CLEAR":
          return { sending: false, isAuthenticated: false, message: "", token: {}, error: "" }
 
 

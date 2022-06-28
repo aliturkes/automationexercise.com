@@ -2,6 +2,12 @@ export const storage = ['32 GB', '64 GB', '128 GB', '256 GB', '512 GB']
 
 export const color = ['Siyah', 'Beyaz', 'Kırmızı', 'Mor', 'Mavi']
 
+export const status = [
+   { name: "Satışta", value: 'open', class: "success" },
+   { name: "Reserve", value: 'reversed', class: "warning" },
+   { name: "Satıldı", value: 'sold', class: "danger" },
+]
+
 export const brands = [
    "Apple",
    "Samsung",

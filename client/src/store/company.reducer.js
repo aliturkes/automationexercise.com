@@ -50,7 +50,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
     case "LOGOUT_FULFILLED":
       return { device: [], loading: false, sending: false, error: null }
 
-      case "LOGOUT_REJECTED":
+      case "CLEAR":
         return { device: [], loading: false, sending: false, error: null }
 
 

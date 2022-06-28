@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Form, Button, Modal, ButtonGroup, ToggleButton } from "react-bootstrap";
-import { useDispatch,useSelector } from 'react-redux'
+import { Row, Col, Form, Button, Modal, ButtonGroup, ToggleButton, ModalFooter } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux'
 import { putDevice, postDevice, delDevice } from '../../store/actions';
-import { brands, storage, color } from "../helpers/data"
+import { brands, storage, color, status } from "../helpers/data"
 
 
 const initialState = { brand: "", model: "", storage: "", color: "", price: "", imei: "", soldPrice: "", buyPrice: "", soldWho: "", status: "", id: null }
@@ -14,6 +14,8 @@ export default function CompanyForm(props) {
    const { devicestate } = props
 
    const options = useSelector(state => state?.authReducer?.token?.user?.options)
+
+   // const options = { isImei: true, isBuyPrice: true, isSoldPrice: true, isSoldWho: true }
 
    const dispatch = useDispatch()
 
@@ -37,8 +39,8 @@ export default function CompanyForm(props) {
 
 
 
-   // console.log(options)
-   console.log(devicestate)
+   console.log(options)
+   // console.log(devicestate)
 
 
 
@@ -51,9 +53,9 @@ export default function CompanyForm(props) {
             </Modal.Title>
          </Modal.Header>
 
-         <Modal.Body className="m-md-3">
+         <Form onSubmit={handleSubmit}>
 
-            <Form onSubmit={handleSubmit}>
+            <Modal.Body className="m-md-3">
 
                <Row className='align-items-end'>
 
@@ -90,34 +92,47 @@ export default function CompanyForm(props) {
                      ))}
                   </ButtonGroup>
 
-                  <Form.Group controlId="deviceImei" className="mb-3">
-                     <Form.Label>Imei</Form.Label>
-                     <Form.Control name="imei" type="string" maxLength="50" onChange={onInputChange} value={formData.imei} />
-                  </Form.Group>
-
                   <Form.Group as={Col} xs="6" controlId="devicePrice" className="mb-3">
                      <Form.Label>Fiyat</Form.Label>
                      <Form.Control name="price" type="number" maxLength="50" onChange={onInputChange} value={formData.price} />
                   </Form.Group>
 
-                  <Form.Group as={Col} xs="6" controlId="deviceSoldPrice" className="mb-3">
+
+                  <Form.Group as={Col} xs="6" className="mb-3">
+                     <Form.Label>Cihaz Durumu</Form.Label>
+                     <ButtonGroup >
+                        {status.map((item, i) => (
+                           <ToggleButton key={i} name="color" type="radio" id={`color-${i}`} variant={`outline-${item.class}`}
+                              onChange={onInputChange} checked={item === formData.color} value={item.value} >
+                              {item.name}
+                           </ToggleButton>
+                        ))}
+                     </ButtonGroup>
+                  </Form.Group>
+
+
+
+                  {options.isImei && <Form.Group controlId="deviceImei" className="mb-3">
+                     <Form.Label>Imei</Form.Label>
+                     <Form.Control name="imei" type="string" maxLength="50" onChange={onInputChange} value={formData.imei} />
+                  </Form.Group>}
+
+                  {options.isSoldPrice && <Form.Group as={Col} xs="6" controlId="deviceSoldPrice" className="mb-3">
                      <Form.Label>Alış Fiyatı</Form.Label>
                      <Form.Control name="soldPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.soldPrice} />
-                  </Form.Group>
+                  </Form.Group>}
 
-                  <Form.Group as={Col} xs="6" controlId="deviceBuyPrice" className="mb-3">
+                  {options.isBuyPrice && <Form.Group as={Col} xs="6" controlId="deviceBuyPrice" className="mb-3">
                      <Form.Label>Satış Fiyatı</Form.Label>
                      <Form.Control name="buyPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.buyPrice} />
-                  </Form.Group>
+                  </Form.Group>}
 
-                  <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
+                  {options.isSoldWho && <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
                      <Form.Label>Kime Satıldı?</Form.Label>
                      <Form.Control name="soldWho" type="type" maxLength="50" onChange={onInputChange} value={formData.soldWho} />
-                  </Form.Group>
+                  </Form.Group>}
 
-                  <Form.Group controlId="deviceStatus" className="mb-3">
-                     <Form.Check name="status" type="switch" id="custom-switch" label="Satıldı" />
-                  </Form.Group>
+
 
                </Row>
 
@@ -127,20 +142,17 @@ export default function CompanyForm(props) {
 
 
 
-               <Col className="d-flex justify-content-end mt-2 gap-2">
+            </Modal.Body>
 
-                  <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delDevice(devicestate.id), props.onHide())} style={{ display: !devicestate && "none" }}>Sil</Button>
+            <Modal.Footer>
+               <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delDevice(devicestate.id), props.onHide())} style={{ display: !devicestate && "none" }}>Sil</Button>
 
-                  <Button variant="outline-secondary from-btn" type="button" onClick={() => { setFormData(devicestate ? devicestate : initialState); props.onHide() }}>Vazgeç</Button>
+               <Button variant="outline-secondary from-btn" type="button" onClick={() => { setFormData(devicestate ? devicestate : initialState); props.onHide() }}>Vazgeç</Button>
 
-                  <Button variant="outline-primary from-btn" type="submit" onClick={() => setTimeout(() => { props.onHide() }, 500)}>Kaydet</Button>
+               <Button variant="outline-primary from-btn" type="submit" onClick={() => setTimeout(() => { props.onHide() }, 500)}>Kaydet</Button>
+            </Modal.Footer>
 
-               </Col>
-
-            </Form>
-
-         </Modal.Body>
-
+         </Form>
       </Modal >
    )
 }

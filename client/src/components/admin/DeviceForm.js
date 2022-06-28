@@ -46,11 +46,11 @@ export default function DeviceForm(props) {
                {devicestate ? "Cihaz Düzenle" : "Cihaz Ekle"}
             </Modal.Title>
          </Modal.Header>
+         <Form onSubmit={handleSubmit}>
+            <Modal.Body className="m-3">
 
-         <Modal.Body className="m-3">
 
 
-            <Form onSubmit={handleSubmit}>
 
                <Row className='align-items-end'>
 
@@ -134,20 +134,19 @@ export default function DeviceForm(props) {
 
 
 
-               <Col className="d-flex justify-content-end mt-2 gap-2">
+            </Modal.Body>
 
-                  <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delDevices(devicestate.id), props.onHide())} style={{ display: !devicestate && "none" }}>Sil</Button>
+            <Modal.Footer>
 
-                  <Button variant="outline-secondary from-btn" type="button" onClick={() => { setFormData(devicestate ? devicestate : initialState); props.onHide() }}>Vazgeç</Button>
+               <Button variant="outline-danger from-btn" type="button" onClick={() => dispatch(delDevices(devicestate.id), props.onHide())} style={{ display: !devicestate && "none" }}>Sil</Button>
 
-                  <Button variant="outline-primary from-btn" type="submit" onClick={() => !devicestate && props.onHide()}>Kaydet</Button>
+               <Button variant="outline-secondary from-btn" type="button" onClick={() => { setFormData(devicestate ? devicestate : initialState); props.onHide() }}>Vazgeç</Button>
 
-               </Col>
+               <Button variant="outline-primary from-btn" type="submit" onClick={() => !devicestate && props.onHide()}>Kaydet</Button>
 
+            </Modal.Footer>
 
-            </Form>
-
-         </Modal.Body>
+         </Form>
 
       </Modal >
    )
