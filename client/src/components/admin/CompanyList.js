@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Button, Dropdown, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Button } from "react-bootstrap";
 import { BsPlusLg, BsPencilSquare } from 'react-icons/bs'
 import { Grid, _ } from 'gridjs-react';
 import { getUsers } from '../../store/actions';
@@ -19,9 +18,9 @@ export default function CompanyList() {
 
    const { users, error, loading } = store.adminReducer
 
-   const { isAuthenticated } = store.authReducer
+   const { isAuthenticated, token } = store.authReducer
 
-   useEffect(() => { isAuthenticated && dispatch(getUsers()) }, [])
+   useEffect(() => { isAuthenticated && dispatch(getUsers(token)) }, [])
 
    const [detailShow, setDetailShow] = useState(false);
 
@@ -38,7 +37,7 @@ export default function CompanyList() {
       { id: 'phone', name: 'Telefon No', width: "100%", formatter: (cell) => _(<a href={`tel:${cell}`} className="phone">{cell}</a>) },
       { id: "id", name: "id", hidden: true },
       {
-         id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,
+         id: "edit", name: "", sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
             console.log(row);
             setDetailShow(true);
@@ -48,14 +47,19 @@ export default function CompanyList() {
    ]
 
 
-   // data.map(item => item.edit = _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => { /*setDetailShow(true); setRequest(item) */ }}><BsPencilSquare /></Button>))
 
    // console.log(deviceState);
 
    return (
 
       <>
+
          <h1 className="display-5 text-muted mb-3 text-end">Bayi Listesi</h1>
+
+         {/* <div className='d-flex align-items-center justify-content-between mb-3'>
+            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
+            <span className="display-5 text-muted">Bayi Listesi</span>
+         </div> */}
 
          <Grid
             pagination={{ limit: 10, summary: false }}

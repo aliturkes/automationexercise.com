@@ -1,3 +1,7 @@
+export const storage = ['32 GB', '64 GB', '128 GB', '256 GB', '512 GB']
+
+export const color = ['Siyah', 'Beyaz', 'Kırmızı', 'Mor', 'Mavi']
+
 export const brands = [
    "Apple",
    "Samsung",

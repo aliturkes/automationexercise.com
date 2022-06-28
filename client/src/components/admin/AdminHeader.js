@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { logout } from '../../store/actions'
 import { BsFillPersonFill } from "react-icons/bs";
-
+import Logo from "../Logo";
 
 
 export default function AdminHeader() {
@@ -14,12 +14,10 @@ export default function AdminHeader() {
 	const navigate = useNavigate()
 
 	return (
-		<Navbar expand="md">
+		<Navbar>
 			<Container className="justify-content-between align-items-end mt-3">
 
-				<Navbar.Brand href="/">
-					{/* <img src="/img/logo.png" alt="logo" height="60"></img> */}
-				</Navbar.Brand>
+				<Navbar.Brand><Logo /></Navbar.Brand>
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
@@ -37,7 +35,7 @@ export default function AdminHeader() {
 
 							<Dropdown.Menu align="end">
 								<Dropdown.Item href="#" disabled>Şifre Değiştir</Dropdown.Item>
-								<Dropdown.Item href="#" disabled>Hesabı Sil</Dropdown.Item>
+								{/* <Dropdown.Item href="#" disabled>Hesabı Sil</Dropdown.Item> */}
 								<Dropdown.Divider />
 								<Dropdown.Item as="button" onClick={() => { navigate("/"); dispatch(logout()); }}>Çıkış Yap</Dropdown.Item>
 							</Dropdown.Menu>

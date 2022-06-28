@@ -13,7 +13,6 @@ import { getDevices } from '../../store/actions';
 
 export default function DeviceList() {
 
-
    const navigate = useNavigate()
 
    const dispatch = useDispatch()
@@ -22,9 +21,10 @@ export default function DeviceList() {
 
    const { devices, error, loading } = store.adminReducer
 
-   const { isAuthenticated } = store.authReducer
+   const { isAuthenticated,token } = store.authReducer
 
-   useEffect(() => { isAuthenticated && dispatch(getDevices()) }, [])
+   useEffect(() => { isAuthenticated && dispatch(getDevices(token)) }, [token.id])
+
 
 
    const [detailShow, setDetailShow] = useState(false);
@@ -43,7 +43,7 @@ export default function DeviceList() {
       { id: "id", name: "id", hidden: true },
       { id: "userId", name: "userId", hidden: true },
       {
-         id: "edit", name: _(<Button variant="success" size='sm' onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>), sort: false,
+         id: "edit", name: "", sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
             console.log(row);
             setDetailShow(true);
@@ -59,7 +59,11 @@ export default function DeviceList() {
    return (
 
       <>
-         <h1 className="display-5 text-muted mb-3 text-end">Bayi Telefon Listesi</h1>
+
+         <div className='d-flex align-items-center justify-content-between mb-3'>
+            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
+            <span className="display-5 text-muted">Bayi Telefon Listesi</span>
+         </div> 
 
          <Grid
             pagination={{ limit: 10, summary: false }}

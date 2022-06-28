@@ -22,9 +22,9 @@ export default function CompanyDevice() {
 
    const { device, error, loading } = store.companyReducer
 
-   const { isAuthenticated } = store.authReducer
+   const { isAuthenticated, token } = store.authReducer
 
-   useEffect(() => { isAuthenticated && dispatch(getDevice()) }, [])
+   useEffect(() => { isAuthenticated && dispatch(getDevice(token)) }, [])
 
    const [detailShow, setDetailShow] = useState(false);
 
@@ -39,9 +39,9 @@ export default function CompanyDevice() {
       { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString()) },
       { id: "id", name: "id", hidden: true },
       {
-         id: "edit", name: _(), sort: false,
+         id: "edit", name: "", sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary ' onClick={() => {
-            console.log(row);
+            // console.log(row);
             setDetailShow(true);
             setDeviceState({ brand: row.cells[0].data, model: row.cells[1].data, storage: row.cells[2].data, color: row.cells[3].data, price: row.cells[4].data, id: row.cells[5].data })
          }}><BsPencilSquare /></Button>)
@@ -50,7 +50,7 @@ export default function CompanyDevice() {
 
 
 
-   console.log(deviceState);
+   // console.log(deviceState);
 
 
    return (

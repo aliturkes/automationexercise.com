@@ -4,6 +4,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../store/actions'
 import { BsFillPersonFill } from "react-icons/bs";
+import Logo from "../Logo";
+
+
 
 export default function CompanyHeader() {
 
@@ -14,12 +17,10 @@ export default function CompanyHeader() {
 	const company = useSelector(state => state.authReducer?.user?.user?.company)
 
 	return (
-		<Navbar expand="md">
+		<Navbar>
 			<Container className="justify-content-between align-items-end mt-3">
 
-				<Navbar.Brand href="/">
-					{/* <img src="/img/logo.png" alt="logo" height="60"></img> */}
-				</Navbar.Brand>
+				<Navbar.Brand><Logo /></Navbar.Brand>
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">

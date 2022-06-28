@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Form, Button, Modal } from "react-bootstrap";
+import { Row, Col, Form, Button, Modal, ButtonGroup, ToggleButton } from "react-bootstrap";
 import { useDispatch } from 'react-redux'
 import { putDevices, postDevices, delDevices } from '../../store/actions';
+import { brands, storage, color } from "../helpers/data"
 
 
 
-const initialState = { company: "", brand: "", model: "", storage: "", color: "", price: "", id: null, userId: 1 }
+const initialState = { company: "Admin", brand: "", model: "", storage: "", color: "", price: "", imei: "", soldPrice: "", buyPrice: "", soldWho: "", status: "", id: null, userId: 1 }
 
 
 export default function DeviceForm(props) {
@@ -53,14 +54,12 @@ export default function DeviceForm(props) {
 
                <Row className='align-items-end'>
 
-                  <Form.Group controlId="deviceCompany" className="mb-3">
-                     <Form.Label>Firma</Form.Label>
-                     <Form.Control name="company" type="text" maxLength="50" onChange={onInputChange} value={formData.company} readOnly />
-                  </Form.Group>
-
-                  <Form.Group controlId="deviceBrand" className="mb-3">
+               <Form.Group controlId="deviceBrand" className="mb-3">
                      <Form.Label>Marka</Form.Label>
-                     <Form.Control name="brand" type="text" maxLength="50" onChange={onInputChange} value={formData.brand} />
+                     <Form.Select name="brand" onChange={onInputChange} value={formData.brand} autoFocus>
+                        <option value="" hidden>Please choose...</option>
+                        {brands?.map((item, i) => <option key={i} value={item}>{item}</option>)}
+                     </Form.Select>
                   </Form.Group>
 
                   <Form.Group controlId="deviceModel" className="mb-3">
@@ -68,19 +67,53 @@ export default function DeviceForm(props) {
                      <Form.Control name="model" type="text" maxLength="50" onChange={onInputChange} value={formData.model} />
                   </Form.Group>
 
-                  <Form.Group controlId="deviceStorage" className="mb-3">
-                     <Form.Label>Hafıza</Form.Label>
-                     <Form.Control name="storage" type="text" maxLength="50" onChange={onInputChange} value={formData.storage} />
+                  <Form.Label>Hafıza</Form.Label>
+                  <ButtonGroup className="mb-3">
+                     {storage.map((item, i) => (
+                        <ToggleButton key={i} name="storage" type="radio" id={`storage-${i}`} variant="outline-secondary"
+                           onChange={onInputChange} checked={item === formData.storage} value={item} >
+                           {item}
+                        </ToggleButton>
+                     ))}
+                  </ButtonGroup>
+
+                  <Form.Label>Renk</Form.Label>
+                  <ButtonGroup className="mb-3">
+                     {color.map((item, i) => (
+                        <ToggleButton key={i} name="color" type="radio" id={`color-${i}`} variant="outline-secondary"
+                           onChange={onInputChange} checked={item === formData.color} value={item} >
+                           {item}
+                        </ToggleButton>
+                     ))}
+                  </ButtonGroup>
+
+                  <Form.Group controlId="deviceImei" className="mb-3">
+                     <Form.Label>Imei</Form.Label>
+                     <Form.Control name="imei" type="string" maxLength="50" onChange={onInputChange} value={formData.imei} />
                   </Form.Group>
 
-                  <Form.Group controlId="deviceColor" className="mb-3">
-                     <Form.Label>Renk</Form.Label>
-                     <Form.Control name="color" type="text" maxLength="50" onChange={onInputChange} value={formData.color} />
-                  </Form.Group>
-
-                  <Form.Group controlId="devicePrice" className="mb-3">
+                  <Form.Group as={Col} xs="6" controlId="devicePrice" className="mb-3">
                      <Form.Label>Fiyat</Form.Label>
-                     <Form.Control name="price" type="text" maxLength="50" onChange={onInputChange} value={formData.price} />
+                     <Form.Control name="price" type="number" maxLength="50" onChange={onInputChange} value={formData.price} />
+                  </Form.Group>
+
+                  <Form.Group as={Col} xs="6" controlId="deviceSoldPrice" className="mb-3">
+                     <Form.Label>Alış Fiyatı</Form.Label>
+                     <Form.Control name="soldPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.soldPrice} />
+                  </Form.Group>
+
+                  <Form.Group as={Col} xs="6" controlId="deviceBuyPrice" className="mb-3">
+                     <Form.Label>Satış Fiyatı</Form.Label>
+                     <Form.Control name="buyPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.buyPrice} />
+                  </Form.Group>
+
+                  <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
+                     <Form.Label>Kime Satıldı?</Form.Label>
+                     <Form.Control name="soldWho" type="type" maxLength="50" onChange={onInputChange} value={formData.soldWho} />
+                  </Form.Group>
+
+                  <Form.Group controlId="deviceStatus" className="mb-3">
+                     <Form.Check name="status" type="switch" id="custom-switch" label="Satıldı" />
                   </Form.Group>
 
 
