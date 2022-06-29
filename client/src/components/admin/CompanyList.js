@@ -58,7 +58,7 @@ export default function CompanyList() {
    return (
       <>
 
-         <h1 className="display-5 text-muted mb-3 text-end">Bayi Listesi</h1>
+         <h1 className="display-5 text-muted mb-3">Bayi Listesi</h1>
 
          {/* <div className='d-flex align-items-center justify-content-between mb-3'>
             <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>

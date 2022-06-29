@@ -39,16 +39,16 @@ export default function CompanyForm(props) {
 
 
 
-   console.log(options)
-   // console.log(devicestate)
+   // console.log(options)
+   console.log(devicestate)
 
-
+   console.log(formData);
 
    return (
       <Modal {...props} size="md" backdrop="static" aria-labelledby="contained-modal-title-vcenter" centered >
 
          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Title id="contained-modal-title-vcenter" style={{paddingLeft: 0}}>
                {devicestate ? "Cihaz Düzenle" : "Cihaz Ekle"}
             </Modal.Title>
          </Modal.Header>
@@ -92,18 +92,18 @@ export default function CompanyForm(props) {
                      ))}
                   </ButtonGroup>
 
-                  <Form.Group as={Col} xs="6" controlId="devicePrice" className="mb-3">
+                  <Form.Group as={Col} sm="6" controlId="devicePrice" className="mb-3">
                      <Form.Label>Fiyat</Form.Label>
                      <Form.Control name="price" type="number" maxLength="50" onChange={onInputChange} value={formData.price} />
                   </Form.Group>
 
 
-                  <Form.Group as={Col} xs="6" className="mb-3">
+                  <Form.Group as={Col} sm="6" className="mb-3">
                      <Form.Label>Cihaz Durumu</Form.Label>
                      <ButtonGroup >
                         {status.map((item, i) => (
-                           <ToggleButton key={i} name="color" type="radio" id={`color-${i}`} variant={`outline-${item.class}`}
-                              onChange={onInputChange} checked={item === formData.color} value={item.value} >
+                           <ToggleButton key={i} name="status" type="radio" id={`status-${i}`} variant={`outline-${item.class}`}
+                              onChange={onInputChange} checked={item.value === formData.status} value={item.value} >
                               {item.name}
                            </ToggleButton>
                         ))}
@@ -127,7 +127,7 @@ export default function CompanyForm(props) {
                      <Form.Control name="buyPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.buyPrice} />
                   </Form.Group>}
 
-                  {options?.isSoldWho && <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
+                  {(options?.isSoldWho && formData.status === "sold") && <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
                      <Form.Label>Kime Satıldı?</Form.Label>
                      <Form.Control name="soldWho" type="type" maxLength="50" onChange={onInputChange} value={formData.soldWho} />
                   </Form.Group>}

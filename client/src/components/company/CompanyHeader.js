@@ -28,15 +28,15 @@ export default function CompanyHeader() {
 
 					<Nav className="align-items-center gap-2" id="nav">
 
-						<div>{company}</div>
-
+					<div className="nav-link text-body">{company}</div>
+						
 						<Dropdown className="d-inline">
 							<Dropdown.Toggle size="sm" variant="link" className="text-dark p-0">
-								<BsFillPersonFill className="fs-4" />
+								<BsFillPersonFill className="fs-3" />
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align="end">
-								<Dropdown.Item href="/change-password">Şifre Değiştir</Dropdown.Item>
+								<Dropdown.Item href="/change-password" disabled>Şifre Değiştir</Dropdown.Item>
 								{/* <Dropdown.Item href="#" disabled>Hesabı Sil</Dropdown.Item> */}
 								<Dropdown.Divider />
 								<Dropdown.Item as="button" onClick={() => { navigate("/"); dispatch(logout()); }}>Çıkış Yap</Dropdown.Item>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Table, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { BsPlusLg, BsPencilSquare } from 'react-icons/bs'
+import { BsPlusLg, BsPencilSquare,BsFillCircleFill } from 'react-icons/bs'
 import { Grid, _ } from "gridjs-react";
 import DeviceForm from './DeviceForm';
 import { getDevices } from '../../store/actions';
@@ -39,18 +39,23 @@ export default function DeviceList() {
       { id: "model", name: "Model", width: "100%" },
       { id: "storage", name: "Hafıza", width: "100%" },
       { id: "color", name: "Renk", width: "100%" },
-      { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺ " + cell.toLocaleString()) },
+      { id: "price", name: "Fiyat", width: "100%", formatter: (cell) => _("₺" + cell.toLocaleString()) },
       { id: "id", name: "id", hidden: true },
       { id: "userId", name: "userId", hidden: true },
       { id: "buyPrice", name: "buyPrice", hidden: true },
       { id: "imei", name: "imei", hidden: true },
       { id: "soldPrice", name: "soldPrice", hidden: true },
       { id: "soldWho", name: "soldWho", hidden: true },
-      { id: "status", name: "status", hidden: true },
+      {
+         id: "status", name: "", formatter: (cell) => _(<BsFillCircleFill
+            title={cell === "open" ? "Satışta" : cell === "sold" ? "Satıldı" : "Reserve"}
+            className={cell === "open" ? "text-success" : cell === "sold" ? "text-danger" : "text-warning"} />)
+      },
       {
          id: "edit", name: "", sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary'
-            onClick={() => { console.log(row)
+            onClick={() => {
+               console.log(row)
                setDetailShow(true)
                setDeviceState({
                   company: row?.cells[0]?.data?.company,
@@ -78,8 +83,8 @@ export default function DeviceList() {
    return (
       <>
          <div className='d-flex align-items-center justify-content-between mb-3'>
-            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
             <span className="display-5 text-muted">Bayi Telefon Listesi</span>
+            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
          </div>
 
          <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} columns={columns} data={data} fullWidth={true}

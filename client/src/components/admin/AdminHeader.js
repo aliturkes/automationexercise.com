@@ -7,6 +7,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import Logo from "../Logo";
 
 
+
 export default function AdminHeader() {
 
 	const dispatch = useDispatch();
@@ -24,17 +25,16 @@ export default function AdminHeader() {
 
 					<Nav className="align-items-center gap-2" id="nav">
 
-
-						<NavLink className="nav-link text-body" to="/admin/">Cihaz Listesi</NavLink>
-						<NavLink className="nav-link text-body" to="/admin/company">Bayi Listesi</NavLink>
+						<NavLink className="nav-link text-body" to="/admin/">Cihazlar</NavLink>
+						<NavLink className="nav-link text-body" to="/admin/company">Bayiler</NavLink>
 
 						<Dropdown className="d-inline">
 							<Dropdown.Toggle size="sm" variant="link" className="text-dark p-0">
-								<BsFillPersonFill className="fs-4" />
+								<BsFillPersonFill className="fs-3" />
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu align="end">
-								<Dropdown.Item href="/change-password">Şifre Değiştir</Dropdown.Item>
+								<Dropdown.Item href="/change-password" disabled>Şifre Değiştir</Dropdown.Item>
 								{/* <Dropdown.Item href="#" disabled>Hesabı Sil</Dropdown.Item> */}
 								<Dropdown.Divider />
 								<Dropdown.Item as="button" onClick={() => { navigate("/"); dispatch(logout()); }}>Çıkış Yap</Dropdown.Item>

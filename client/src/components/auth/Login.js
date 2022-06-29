@@ -71,7 +71,7 @@ export default function Login() {
 
                   </Form>
 
-                  <p className="mb-1"><Link to="/reset-password" className="text-muted small">Şifremi unuttum</Link></p>
+                  {/* <p className="mb-1"><Link to="/reset-password" className="text-muted small">Şifremi unuttum</Link></p> */}
                   <p className="mb-4"><Link to="/signup" className="text-muted small">Hesabınız yok mu?</Link></p>
 
                </Card.Body>

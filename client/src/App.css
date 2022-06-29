@@ -26,7 +26,7 @@ body {
   line-height: 1.5;
   overflow-y: auto;
   overflow-x: hidden;
-  background-image: url("./assets/images/dots-background.png");
+  background-image: url("../public/img/dots-background.png");
 }
 
 
@@ -86,6 +86,31 @@ a[href^="tel"]:hover {
 .from-btn {
   width: 80px;
 }
+
+
+
+
+/* DEVICE FORM*/
+
+.btn-outline-primary{
+  border-color: #ced4da !important;
+  color: black !important;
+}
+
+.btn-check:checked+.btn-outline-primary{
+  background-color: #85B7FE !important;
+  color: white !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #85B7FE !important;
+  color: white !important;
+}
+
+
+
+
+
 
 .form-control[disabled] {
   border-color: #F8F9FA;
@@ -164,7 +189,7 @@ footer svg {
 }
 
 .gridjs-tr td {
-  padding: 4px 12px !important;
+  padding: 6px 12px !important;
 }
 
 .gridjs-tr td:last-child {
