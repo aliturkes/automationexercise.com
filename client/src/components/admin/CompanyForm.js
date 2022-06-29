@@ -48,23 +48,25 @@ export default function CompanyForm(props) {
 
                <Row className='align-items-end'>
 
-                  <Form.Group controlId="deviceCompany" className="mb-3">
-                     <Form.Label>Firma</Form.Label>
-                     <Form.Control name="model" type="text" maxLength="50" onChange={onInputChange} value={formData?.company} disabled />
+
+                  <Form.Group controlId="personCompany" className="mb-3">
+                     <Form.Label>Firma Adı</Form.Label>
+                     <Form.Control name="company" type="text" maxLength="30" size='lg' onChange={onInputChange} value={formData.company} required />
                   </Form.Group>
 
-
-
-                  <Form.Group controlId="deviceModel" className="mb-3">
-                     <Form.Label>Model</Form.Label>
-                     <Form.Control name="model" type="text" maxLength="50" onChange={onInputChange} value={formData.model} />
+                  <Form.Group controlId="personName" className="mb-3">
+                     <Form.Label>Ad Soyad</Form.Label>
+                     <Form.Control name="name" type="text" maxLength="30" size='lg' onChange={onInputChange} value={formData.name} required />
                   </Form.Group>
 
+                  <Form.Group controlId="personEmail" className="mb-3">
+                     <Form.Label>Email</Form.Label>
+                     <Form.Control name="email" type="email" maxLength="30" size='lg' onChange={onInputChange} value={formData.email} required />
+                  </Form.Group>
 
-
-                  <Form.Group as={Col} sm="6" controlId="devicePrice" className="mb-3">
-                     <Form.Label>Fiyat</Form.Label>
-                     <Form.Control name="price" type="number" maxLength="50" onChange={onInputChange} value={formData.price} />
+                  <Form.Group controlId="personPhone" className="mb-3">
+                     <Form.Label>Telefon Numarası</Form.Label>
+                     <Form.Control name="phone" type="number" maxLength="30" size='lg' onChange={onInputChange} value={formData.phone} required />
                   </Form.Group>
 
 

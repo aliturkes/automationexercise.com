@@ -18,7 +18,7 @@ const token = () => localStorage.getItem('persist:root')
 
 
 
-// #region ---------------------------- AUTH --------------------------------//
+// #region ---------------------------- AUTH -------------------------------- //
 
 
 
@@ -95,7 +95,7 @@ export function clear() {
 
 
 
-// #region ------------------------ ADMIN-DEVICES ---------------------------//
+// #region ------------------------ ADMIN-DEVICES --------------------------- //
 
 
 
@@ -145,7 +145,7 @@ export function delDevices(token, id) {
 
 
 
-//#region -------------------------- ADMIN-USERS ----------------------------//
+// #region ------------------------- ADMIN-USERS ---------------------------- //
 
 
 
@@ -187,7 +187,7 @@ export function delUsers(id) {
 
 
 
-// #region ---------------------------- USER --------------------------------//
+// #region ---------------------------- USER -------------------------------- //
 
 
 // https://b2bdevice.tk/api/users/1/devices?access_token=548OWrq1q9QXrbiYLB4FbiV80CcbqfOGtdpKzRgdwL7FyEwMXj8ICXwwR6Cf8O3l

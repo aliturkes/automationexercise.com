@@ -138,7 +138,7 @@ export default function DeviceForm(props) {
                      <Form.Control name="soldPrice" type="number" maxLength="50" onChange={onInputChange} value={formData.soldPrice} />
                   </Form.Group>}
 
-                  {(options?.isSoldWho && formData.status === "sold") && <Form.Group as={Col} xs="6" controlId="deviceSoldWho" className="mb-3">
+                  {(options?.isSoldWho && formData.status === "sold") && <Form.Group controlId="deviceSoldWho" className="mb-3">
                      <Form.Label>Kime Satıldı?</Form.Label>
                      <Form.Control name="soldWho" type="type" maxLength="50" onChange={onInputChange} value={formData.soldWho} />
                   </Form.Group>}

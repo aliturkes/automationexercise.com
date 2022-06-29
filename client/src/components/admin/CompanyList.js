@@ -12,7 +12,6 @@ import CompanyForm from './CompanyForm';
 
 export default function CompanyList() {
 
-
    const dispatch = useDispatch()
 
    const store = useSelector(state => state)
@@ -21,13 +20,13 @@ export default function CompanyList() {
 
    const { isAuthenticated, token } = store.authReducer
 
-   useEffect(() => { isAuthenticated && dispatch(getUsers(token)) }, [])
+   useEffect(() => { isAuthenticated && dispatch(getUsers(token)) }, [isAuthenticated])
 
    const [detailShow, setDetailShow] = useState(false);
 
    const [compState, setCompState] = useState(null);
 
-   const data = [...users]
+   const data = [...users.filter(user => user.id !== 1)]
 
    const columns = [
       { id: "company", name: 'Firma', width: "100%" },
@@ -50,13 +49,11 @@ export default function CompanyList() {
                   id: row.cells[4].data,
                   options: row.cells[5].data
                })
-            }}><BsPencilSquare /></Button>),
+            }}><BsPencilSquare /></Button>), hidden:true
       }
    ]
 
 
-   // console.log(users);
-   // console.log(deviceState);
 
    return (
       <>
