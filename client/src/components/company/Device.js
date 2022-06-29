@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusLg, BsPencilSquare, BsFillCircleFill } from 'react-icons/bs'
 import { Grid, _ } from "gridjs-react";
-import CompanyForm from './CompanyForm';
+import DeviceForm from './DeviceForm';
 import { getDevice } from '../../store/actions';
 
 
 
 
-export default function CompanyDevice() {
+export default function Device() {
 
 
    const navigate = useNavigate()
@@ -98,7 +98,7 @@ export default function CompanyDevice() {
          />
 
 
-         <CompanyForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} />
+         <DeviceForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} />
 
          {loading && <div className="loading"><div className="spinner"></div></div>}
 

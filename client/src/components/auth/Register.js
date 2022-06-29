@@ -21,7 +21,6 @@ export default function Register() {
 
   // const { message } = store.token
 
-
   const [validated, setValidated] = useState(initialValid);
 
   const [formData, setFormData] = useState(initialState)

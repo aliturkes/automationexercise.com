@@ -12,16 +12,9 @@ const reset = "/reset-password"
 const change = "/change-password"
 
 
-
-
-
-// #region ---------------------------- TOKEN --------------------------------//
-
-
-const token = () => JSON.parse(JSON.parse(localStorage.getItem('persist:root'))?.authReducer)?.token
-
-
-// #endregion
+const token = () => localStorage.getItem('persist:root')
+   ? JSON.parse(JSON.parse(localStorage.getItem('persist:root'))?.authReducer)?.token?.id
+   : 0
 
 
 
@@ -33,8 +26,8 @@ export function login(data) {
    return dispatch => {
       dispatch({
          type: "LOGIN",
-         payload: API.post(users + "/login", data)
-      }).catch(err => {console.log(err.response.data.error.message)})
+         payload: API.post(`${users}/login`, data)
+      }).catch(err => { console.log(err.response.data.error.message) })
    }
 }
 
@@ -57,7 +50,7 @@ export function logout() {
    return dispatch => {
       dispatch({
          type: "LOGOUT",
-         payload: API.post(users + "/logout?access_token=" + token().id)
+         payload: API.post(`${users}/logout?access_token=${token()}`)
       })
    }
 }
@@ -102,7 +95,7 @@ export function clear() {
 
 
 
-// #region ---------------------------- ADMIN-DEVICES --------------------------------//
+// #region ------------------------ ADMIN-DEVICES ---------------------------//
 
 
 
@@ -111,39 +104,39 @@ export function getDevices(token) {
       let query = { include: { relation: "user", scope: { fields: ['company'] } } }
       dispatch({
          type: "GET_DEVICES",
-         payload: API.get(devices + "?access_token=" + token.id + "&filter=" + JSON.stringify(query))
+         payload: API.get(`${devices}?access_token=${token.id}&filter=${JSON.stringify(query)}`)
       }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
 
 
-export function postDevices(data) {
+export function postDevices(token, data) {
    return dispatch => {
       dispatch({
          type: "POST_DEVICES",
-         payload: API.post(devices + "?access_token=" + token().id, data)
-      })
-   }
-}
-
-
-
-export function putDevices(data) {
-   return dispatch => {
-      dispatch({
-         type: "PUT_DEVICES",
-         payload: API.put(devices + "/" + data.id + "?access_token=" + token().id, data)
+         payload: API.post(`${devices}?access_token=${token.id}`, data)
       }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
 
-export function delDevices(id) {
+
+export function putDevices(token, data) {
+   return dispatch => {
+      dispatch({
+         type: "PUT_DEVICES",
+         payload: API.put(`${devices}/${data.id}?access_token=${token.id}`, data)
+      }).catch(err => { err.response.status === 401 && dispatch(logout()) })
+   }
+}
+
+
+export function delDevices(token, id) {
    return dispatch => {
       dispatch({
          type: "DEL_DEVICES",
-         payload: API.delete(devices + "/" + id + "?access_token=" + token().id)
+         payload: API.delete(`${devices}/${id}?access_token=${token.id}`)
       })
    }
 }
@@ -152,7 +145,7 @@ export function delDevices(id) {
 
 
 
-//--------------------------------- ADMIN-USERS --------------------------------//
+//#region -------------------------- ADMIN-USERS ----------------------------//
 
 
 
@@ -160,7 +153,7 @@ export function getUsers(token) {
    return dispatch => {
       dispatch({
          type: "GET_USERS",
-         payload: API.get(users + "?access_token=" + token.id)
+         payload: API.get(`${users}?access_token=${token.id}`)
       }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
@@ -172,7 +165,7 @@ export function putUsers(data) {
    return dispatch => {
       dispatch({
          type: "PUT_USERS",
-         payload: API.put(users + "/" + data.id, data)
+         payload: API.put(`${users}/${data.id}`, data)
       })
    }
 }
@@ -183,7 +176,7 @@ export function delUsers(id) {
    return dispatch => {
       dispatch({
          type: "DEL_USERS",
-         payload: API.delete(users + "/" + id)
+         payload: API.delete(`${users}/${id}`)
       })
    }
 }
@@ -205,39 +198,39 @@ export function getDevice(token) {
       let query = { where: { or: [{ deleted: null }, { deleted: false }] } }
       dispatch({
          type: "GET_DEVICE",
-         payload: API.get(users + "/" + token.userId + devices + "?access_token=" + token.id + "&filter=" + JSON.stringify(query))
+         payload: API.get(`${users}/${token.userId + devices}?access_token=${token.id}&filter=${JSON.stringify(query)}`)
       }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
 
-export function postDevice(data) {
+export function postDevice(token, data) {
    return dispatch => {
       dispatch({
          type: "POST_DEVICE",
-         payload: API.post(users + "/" + token().userId + devices + "?access_token=" + token().id, data)
-      })
+         payload: API.post(`${users}/${token.userId + devices}?access_token=${token.id}`, data)
+      }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
 // https://b2bdevice.tk/api/users/1/devices/4?access_token=548OWrq1q9QXrbiYLB4FbiV80CcbqfOGtdpKzRgdwL7FyEwMXj8ICXwwR6Cf8O3l
 
-export function putDevice(data) {
+export function putDevice(token, data) {
    return dispatch => {
       dispatch({
          type: "PUT_DEVICE",
-         payload: API.put(users + "/" + token().userId + devices + "/" + data.id + "?access_token=" + token().id, data)
-      })
+         payload: API.put(`${users}/${token.userId + devices}/${data.id}?access_token=${token.id}`, data)
+      }).catch(err => { err.response.status === 401 && dispatch(logout()) })
    }
 }
 
 
-export function delDevice(id) {
+export function delDevice(token, id) {
    return dispatch => {
       dispatch({
          type: "DEL_DEVICE",
-         payload: API.put(users + "/" + token().userId + devices + "/" + id + "?access_token=" + token().id, { deleted: true })
-      }).then(res => { console.log(res) })
+         payload: API.put(`${users}/${token.userId + devices}/${id}?access_token=${token.id}`, { deleted: true })
+      })
    }
 }
 

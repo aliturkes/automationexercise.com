@@ -6,7 +6,7 @@ import CompanyList from './CompanyList'
 import "gridjs/dist/theme/mermaid.css";
 import { Route, Routes } from 'react-router-dom'
 import DeviceList from './DeviceList'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -27,7 +27,7 @@ export default function Admin() {
          <Container className="card p-3 p-md-4 p-lg-5 my-2">
 
             <Routes>
-               <Route path="/" element={<DeviceList />} />
+               <Route path="/device" element={<DeviceList />} />
                <Route path="/company" element={<CompanyList />} />
             </Routes>
 

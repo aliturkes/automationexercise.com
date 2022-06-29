@@ -55,5 +55,4 @@ const data = [
    { company: "Armut", brand: 'Apple', model: 'Iphone SE', storage: '512GB', color: 'Siyah', price: '15.000₺' },
    { company: "Armut", brand: 'Samsung', model: 'Galaxy A23', storage: '128GB', color: 'Beyaz', price: '15.000₺' },
    { company: "Armut", brand: 'Apple', model: 'Iphone 12', storage: '128GB', color: 'Beyaz', price: '20.000₺' },
-
 ]

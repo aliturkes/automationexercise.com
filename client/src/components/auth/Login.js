@@ -25,16 +25,13 @@ export default function Login() {
 
    useEffect(() => { dispatch(clear()) }, [])
 
-   useEffect(() => { isAuthenticated ? (token?.userId === 1 || token?.userId === 2) ? navigate("/admin") : navigate("/company") : navigate("/") }, [isAuthenticated])
+   useEffect(() => { isAuthenticated ? (token?.userId === 1 || token?.userId === 2) ? navigate("/admin/device") : navigate("/company") : navigate("/") }, [isAuthenticated])
 
    const onInputChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }) }
 
-   const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(login(formData))
-   };
+   const handleSubmit = (e) => { e.preventDefault(); dispatch(login(formData)) };
 
-
+   
 
    return (
 
@@ -52,7 +49,6 @@ export default function Login() {
                   </div>
 
                   <h3 className="mb-4">Giriş</h3>
-
 
                   <Form onSubmit={handleSubmit}>
 

@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { BsPlusLg, BsPencilSquare } from 'react-icons/bs'
 import { Grid, _ } from 'gridjs-react';
 import { getUsers } from '../../store/actions';
+import CompanyForm from './CompanyForm';
 
 
 
@@ -24,7 +25,7 @@ export default function CompanyList() {
 
    const [detailShow, setDetailShow] = useState(false);
 
-   const [deviceState, setDeviceState] = useState(null);
+   const [compState, setCompState] = useState(null);
 
    const data = [...users]
 
@@ -34,20 +35,22 @@ export default function CompanyList() {
       { id: 'email', name: 'Email', width: "100%" },
       { id: 'phone', name: 'Telefon No', width: "100%", formatter: (cell) => _(<a href={`tel:${cell}`} className="phone">{cell}</a>) },
       { id: "id", name: "id", hidden: true },
+      { id: "options", name: "options", hidden: true },
       {
          id: "edit", name: "", sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary'
             onClick={() => {
                // console.log(row)
                setDetailShow(true)
-               setDeviceState({
-                  id: row.cells[4].data,
+               setCompState({
                   company: row.cells[0].data,
                   name: row.cells[1].data,
                   email: row.cells[2].data,
-                  phone: row.cells[3].data
+                  phone: row.cells[3].data,
+                  id: row.cells[4].data,
+                  options: row.cells[5].data
                })
-            }}><BsPencilSquare /></Button>), hidden: true,
+            }}><BsPencilSquare /></Button>),
       }
    ]
 
@@ -80,6 +83,8 @@ export default function CompanyList() {
                "error": 'Veriler alınırken bir hata oluştu',
             }}
          />
+
+         <CompanyForm show={detailShow} onHide={() => setDetailShow(false)} compstate={compState} />
 
          {loading && <div className="loading"><div className="spinner"></div></div>}
 

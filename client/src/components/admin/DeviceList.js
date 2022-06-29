@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react'
-import { Table, Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { BsPlusLg, BsPencilSquare,BsFillCircleFill } from 'react-icons/bs'
+import { BsPlusLg, BsPencilSquare, BsFillCircleFill } from 'react-icons/bs'
 import { Grid, _ } from "gridjs-react";
-import DeviceForm from './DeviceForm';
+import DeviceForm from '../company/DeviceForm';
 import { getDevices } from '../../store/actions';
 
 
@@ -30,6 +29,8 @@ export default function DeviceList() {
    const [detailShow, setDetailShow] = useState(false);
 
    const [deviceState, setDeviceState] = useState(null);
+   
+   const [company, setCompany] = useState("");
 
    const data = [...devices]
 
@@ -57,8 +58,8 @@ export default function DeviceList() {
             onClick={() => {
                // console.log(row)
                setDetailShow(true)
+               setCompany(row?.cells[0]?.data?.company)
                setDeviceState({
-                  company: row?.cells[0]?.data?.company,
                   brand: row.cells[1].data,
                   model: row.cells[2].data,
                   storage: row.cells[3].data,
@@ -84,7 +85,7 @@ export default function DeviceList() {
       <>
          <div className='d-flex align-items-center justify-content-between mb-3'>
             <span className="display-5 text-muted">Bayi Telefon Listesi</span>
-            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
+            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null);setCompany("") }}><BsPlusLg /></Button>
          </div>
 
          <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} columns={columns} data={data} fullWidth={true}
@@ -103,7 +104,7 @@ export default function DeviceList() {
             }}
          />
 
-         <DeviceForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} />
+         <DeviceForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} company={company} admin="admin" />
 
          {loading && <div className="loading"><div className="spinner"></div></div>}
 

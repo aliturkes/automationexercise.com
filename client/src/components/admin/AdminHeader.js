@@ -25,7 +25,7 @@ export default function AdminHeader() {
 
 					<Nav className="align-items-center gap-2" id="nav">
 
-						<NavLink className="nav-link text-body" to="/admin/">Cihazlar</NavLink>
+						<NavLink className="nav-link text-body" to="/admin/device">Cihazlar</NavLink>
 						<NavLink className="nav-link text-body" to="/admin/company">Bayiler</NavLink>
 
 						<Dropdown className="d-inline">
