@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import { FaTwitter, FaYoutube, FaEnvelope } from 'react-icons/fa'
 
 
 export default function Footer() {
@@ -18,19 +19,14 @@ export default function Footer() {
 
             <div className="d-flex gap-3 m-2">
 
-               <a href="#" target="_blank" rel="noreferrer">
-                  <svg width="24" height="24"><use xlinkHref="/img/icons.svg#twitter" /></svg>
-               </a>
+               <a href="#"><FaTwitter className='fs-4' /></a>
 
-               <a href="#" target="_blank" rel="noreferrer">
-                  <svg width="26" height="26"><use xlinkHref="/img/icons.svg#youtube" /></svg>
-               </a>
+               <a href="#"><FaYoutube className='fs-3' /></a>
 
-               <a href="#" target="_blank" rel="noreferrer">
-                  <svg width="24" height="24"><use xlinkHref="/img/icons.svg#envelope" /></svg>
-               </a>
+               <a href="#"><FaEnvelope className='fs-4' /></a>
 
             </div>
+
          </footer>
 
       </Container>

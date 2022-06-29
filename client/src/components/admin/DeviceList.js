@@ -55,7 +55,7 @@ export default function DeviceList() {
          id: "edit", name: "", sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary'
             onClick={() => {
-               console.log(row)
+               // console.log(row)
                setDetailShow(true)
                setDeviceState({
                   company: row?.cells[0]?.data?.company,

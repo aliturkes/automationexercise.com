@@ -40,9 +40,9 @@ export default function CompanyForm(props) {
 
 
    // console.log(options)
-   console.log(devicestate)
+   // console.log(devicestate)
 
-   console.log(formData);
+   // console.log(formData);
 
    return (
       <Modal {...props} size="md" backdrop="static" aria-labelledby="contained-modal-title-vcenter" centered >

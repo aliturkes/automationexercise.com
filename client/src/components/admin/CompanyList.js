@@ -38,7 +38,7 @@ export default function CompanyList() {
          id: "edit", name: "", sort: false,
          formatter: (cell, row) => _(<Button variant="link" className='d-flex p-1 fs-4 text-secondary'
             onClick={() => {
-               console.log(row)
+               // console.log(row)
                setDetailShow(true)
                setDeviceState({
                   id: row.cells[4].data,
@@ -47,7 +47,7 @@ export default function CompanyList() {
                   email: row.cells[2].data,
                   phone: row.cells[3].data
                })
-            }}><BsPencilSquare /></Button>)
+            }}><BsPencilSquare /></Button>), hidden: true,
       }
    ]
 

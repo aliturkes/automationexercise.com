@@ -92,12 +92,12 @@ a[href^="tel"]:hover {
 
 /* DEVICE FORM*/
 
-.btn-outline-primary{
+.btn-outline-primary {
   border-color: #ced4da !important;
   color: black !important;
 }
 
-.btn-check:checked+.btn-outline-primary{
+.btn-check:checked+.btn-outline-primary {
   background-color: #85B7FE !important;
   color: white !important;
 }
@@ -176,6 +176,11 @@ footer svg {
 
 /* GRIDJS TABLE SECTION */
 
+.gridjs-container {
+  padding: 0;
+  display: block;
+}
+
 .gridjs-wrapper {
   border-radius: 5px !important;
   box-shadow: none !important;
@@ -185,7 +190,7 @@ footer svg {
 .gridjs-footer {
   box-shadow: none !important;
   border: none !important;
-  padding: 10px 0 10px 12px !important;
+  padding: 10px 0 0 0 !important;
 }
 
 .gridjs-tr td {
