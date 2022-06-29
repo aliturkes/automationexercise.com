@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../store/actions'
 import { BsFillPersonFill } from "react-icons/bs";
@@ -26,9 +26,9 @@ export default function CompanyHeader() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
 
-					<Nav className="align-items-center gap-2" id="nav">
+					<Nav className="align-items-center" id="nav">
 
-					<div className="nav-link text-body">{company}</div>
+					<div className="company-name">{company}</div>
 						
 						<Dropdown className="d-inline">
 							<Dropdown.Toggle size="sm" variant="link" className="text-dark p-0">

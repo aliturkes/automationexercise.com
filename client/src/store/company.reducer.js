@@ -1,9 +1,6 @@
-const INITIAL_STATE = {
-  device: [],
-  loading: false,
-  sending: false,
-  error: null,
-}
+const INITIAL_STATE = { device: [], loading: false, sending: false, error: null, }
+
+
 
 export default (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
@@ -47,11 +44,13 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, device: state.device.filter(item => item.id !== payload.data.id), error: "" }
 
 
+
     case "LOGOUT_FULFILLED":
       return { device: [], loading: false, sending: false, error: null }
 
-      case "CLEAR":
-        return { device: [], loading: false, sending: false, error: null }
+    case "CLEAR":
+      return { device: [], loading: false, sending: false, error: null }
+
 
 
     default:

@@ -1,10 +1,4 @@
-const INITIAL_STATE = {
-   sending: false,
-   isAuthenticated: false,
-   token: {},
-   message: "",
-   error: "",
-}
+const INITIAL_STATE = { sending: false, isAuthenticated: false, token: {}, message: "", error: "", }
 
 
 
@@ -22,6 +16,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
       case "REGISTER_REJECTED":
          return { ...state, error: payload.message, sending: false }
+
+      // #endregion
 
 
 
@@ -46,8 +42,6 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       case "CLEAR":
          return { sending: false, isAuthenticated: false, message: "", token: {}, error: "" }
 
-
-      // #endregion
 
 
       default:

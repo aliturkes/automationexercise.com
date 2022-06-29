@@ -19,11 +19,11 @@ export default function Footer() {
 
             <div className="d-flex gap-3 m-2">
 
-               <a href="#"><FaTwitter className='fs-4' /></a>
+               <a href="#"><FaTwitter className='fs-4 text-muted' /></a>
 
-               <a href="#"><FaYoutube className='fs-3' /></a>
+               <a href="#"><FaYoutube className='fs-3 text-muted' /></a>
 
-               <a href="#"><FaEnvelope className='fs-4' /></a>
+               <a href="#"><FaEnvelope className='fs-4 text-muted' /></a>
 
             </div>
 

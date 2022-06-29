@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Card, Form, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
+import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux'
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import Background from './Background';
 import { register } from "../../store/actions";
-import "./auth.css";
+
 
 
 const initialState = { company: "", name: "", email: "", phone: "", password: "" }
 
 const initialValid = { valid: false, passwordConfirm: "", terms: false }
-
 
 
 export default function Register() {
@@ -21,8 +20,6 @@ export default function Register() {
   // const store = useSelector(state => state)
 
   // const { message } = store.token
-
-  const navigate = useNavigate()
 
 
   const [validated, setValidated] = useState(initialValid);

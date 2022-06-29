@@ -12,7 +12,6 @@ const reset = "/reset-password"
 const change = "/change-password"
 
 
-// https://b2bdevice.tk/api/devices?access_token=548OWrq1q9QXrbiYLB4FbiV80CcbqfOGtdpKzRgdwL7FyEwMXj8ICXwwR6Cf8O3l
 
 
 
@@ -58,7 +57,7 @@ export function logout() {
    return dispatch => {
       dispatch({
          type: "LOGOUT",
-         payload: API.post(users + "/logout" + "?access_token=" + token().id)
+         payload: API.post(users + "/logout?access_token=" + token().id)
       })
    }
 }

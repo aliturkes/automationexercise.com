@@ -1,10 +1,6 @@
-const INITIAL_STATE = {
-  devices: [],
-  users: [],
-  loading: false,
-  sending: false,
-  error: null,
-}
+const INITIAL_STATE = { devices: [], users: [], loading: false, sending: false, error: null, }
+
+
 
 export default (state = INITIAL_STATE, { type, payload }) => {
 
@@ -88,11 +84,13 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, users: state.users.filter(item => item._id !== payload.data._id), error: "" }
 
 
+
     case "LOGOUT_FULFILLED":
       return { devices: [], users: [], loading: false, sending: false, error: null }
 
-    case "LOGOUT_REJECTED":
+    case "CLEAR":
       return { devices: [], users: [], loading: false, sending: false, error: null }
+
 
 
     default:

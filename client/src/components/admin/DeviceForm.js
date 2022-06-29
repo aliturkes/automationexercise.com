@@ -35,7 +35,7 @@ export default function DeviceForm(props) {
    }
 
 
-   console.log(devicestate)
+   // console.log(devicestate)
 
 
    return (
@@ -48,9 +48,6 @@ export default function DeviceForm(props) {
          </Modal.Header>
          <Form onSubmit={handleSubmit}>
             <Modal.Body className="m-3">
-
-
-
 
                <Row className='align-items-end'>
 
