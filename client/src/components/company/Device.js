@@ -7,8 +7,8 @@ import { BsPlusLg, BsPencilSquare, BsFillCircleFill } from 'react-icons/bs'
 import { Grid, _ } from "gridjs-react";
 import DeviceForm from './DeviceForm';
 import { getDevice } from '../../store/actions';
-
-
+import Spinner from "../Spinner";
+import { className, language } from '../gridjsConfig';
 
 
 export default function Device() {
@@ -81,26 +81,13 @@ export default function Device() {
             <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null) }}><BsPlusLg /></Button>
          </div>
 
-         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} columns={columns} data={device} fullWidth={true}
-            className={{ paginationButtonNext: 'next-button', paginationButtonPrev: 'prev-button' }}
-            language={{
-               'search': {
-                  'placeholder': 'Arama...'
-               },
-               'pagination': {
-                  'previous': '<',
-                  'next': '>',
-               },
-               "loading": 'Bekleniyor...',
-               "noRecordsFound": 'Gösterilecek kayıt yok',
-               "error": 'Veriler alınırken bir hata oluştu',
-            }}
-         />
+         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} fullWidth={true}
+            columns={columns} data={device} className={className} language={language} />
 
 
          <DeviceForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} />
 
-         {loading && <div className="loading"><div className="spinner"></div></div>}
+         {loading && <Spinner />}
 
       </>
 

@@ -23,7 +23,7 @@ export default function AdminHeader() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
 
-					<Nav className="align-items-center gap-2" id="nav">
+					<Nav className="align-items-center" id="nav">
 
 						<NavLink className="nav-link text-body" to="/admin/device">Cihazlar</NavLink>
 						<NavLink className="nav-link text-body" to="/admin/company">Bayiler</NavLink>

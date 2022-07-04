@@ -33,6 +33,10 @@ body {
   padding: 0.5rem;
 }
 
+.nav-link{
+  padding: 0.2rem !important;
+  margin: 0.1rem 0.5rem !important;
+}
 
 
 

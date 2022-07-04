@@ -6,8 +6,8 @@ import { BsPlusLg, BsPencilSquare, BsFillCircleFill } from 'react-icons/bs'
 import { Grid, _ } from "gridjs-react";
 import DeviceForm from '../company/DeviceForm';
 import { getDevices } from '../../store/actions';
-
-
+import Spinner from "../Spinner";
+import { className, language } from '../gridjsConfig';
 
 
 export default function DeviceList() {
@@ -29,7 +29,7 @@ export default function DeviceList() {
    const [detailShow, setDetailShow] = useState(false);
 
    const [deviceState, setDeviceState] = useState(null);
-   
+
    const [company, setCompany] = useState("");
 
    const data = [...devices]
@@ -85,28 +85,15 @@ export default function DeviceList() {
       <>
          <div className='d-flex align-items-center justify-content-between mb-3'>
             <span className="display-5 text-muted">Bayi Telefon Listesi</span>
-            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null);setCompany("") }}><BsPlusLg /></Button>
+            <Button variant="success" onClick={() => { setDetailShow(true); setDeviceState(null); setCompany("") }}><BsPlusLg /></Button>
          </div>
 
-         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} columns={columns} data={data} fullWidth={true}
-            className={{ paginationButtonNext: 'next-button', paginationButtonPrev: 'prev-button' }}
-            language={{
-               'search': {
-                  'placeholder': 'Arama...'
-               },
-               'pagination': {
-                  'previous': '<',
-                  'next': '>',
-               },
-               "loading": 'Bekleniyor...',
-               "noRecordsFound": 'Gösterilecek kayıt yok',
-               "error": 'Veriler alınırken bir hata oluştu',
-            }}
-         />
+         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} fullWidth={true}
+            columns={columns} data={data} className={className} language={language}/>
 
          <DeviceForm show={detailShow} onHide={() => setDetailShow(false)} devicestate={deviceState} company={company} admin="admin" />
 
-         {loading && <div className="loading"><div className="spinner"></div></div>}
+         {loading && <Spinner />}
 
       </>
    )

@@ -5,7 +5,8 @@ import { BsPlusLg, BsPencilSquare } from 'react-icons/bs'
 import { Grid, _ } from 'gridjs-react';
 import { getUsers } from '../../store/actions';
 import CompanyForm from './CompanyForm';
-
+import Spinner from "../Spinner";
+import { className, language } from '../gridjsConfig';
 
 
 
@@ -49,7 +50,7 @@ export default function CompanyList() {
                   id: row.cells[4].data,
                   options: row.cells[5].data
                })
-            }}><BsPencilSquare /></Button>), hidden:true
+            }}><BsPencilSquare /></Button>), hidden: true
       }
    ]
 
@@ -65,25 +66,12 @@ export default function CompanyList() {
             <span className="display-5 text-muted">Bayi Listesi</span>
          </div> */}
 
-         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} columns={columns} data={data} fullWidth={true}
-            className={{ paginationButtonNext: 'next-button', paginationButtonPrev: 'prev-button' }}
-            language={{
-               'search': {
-                  'placeholder': 'Arama...'
-               },
-               'pagination': {
-                  'previous': '<',
-                  'next': '>',
-               },
-               "loading": 'Bekleniyor...',
-               "noRecordsFound": 'Gösterilecek kayıt yok',
-               "error": 'Veriler alınırken bir hata oluştu',
-            }}
-         />
+         <Grid pagination={{ limit: 10, summary: false }} search={true} sort={true} fullWidth={true}
+            columns={columns} data={data} className={className} language={language} />
 
          <CompanyForm show={detailShow} onHide={() => setDetailShow(false)} compstate={compState} />
 
-         {loading && <div className="loading"><div className="spinner"></div></div>}
+         {loading && <Spinner />}
 
       </>
    )
