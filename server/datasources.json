@@ -3,5 +3,16 @@
     "name": "db",
     "connector": "memory",
     "file": "../db.json"
+  },
+  "mongo": {
+    "host": "",
+    "port": 0,
+    "url": "mongodb://mongoadmin:adsdvSDSDF345sdfs2SDSDf@ersah.in:27017/b2bdevice?authSource=admin",
+    "database": "",
+    "password": "",
+    "name": "mongo",
+    "user": "",
+    "useNewUrlParser": true,
+    "connector": "mongodb"
   }
 }

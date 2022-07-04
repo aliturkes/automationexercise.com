@@ -1,0 +1,8 @@
+docker run -d --name mongo \
+	-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+	-e MONGO_INITDB_ROOT_PASSWORD=adsdvSDSDF345sdfs2SDSDf \
+	-e MONGO_LOG_FILE=/root/mongo/mongodb.log \
+	-v /root/mongo/data/db:/data/db \
+	-v /root/mongo/data/configdb:/data/configdb \
+  -p 27017:27017 \
+	mongo

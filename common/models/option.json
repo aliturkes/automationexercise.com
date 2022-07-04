@@ -5,6 +5,9 @@
   "options": {
     "validateUpsert": true
   },
+  "hidden": [
+    "id"
+  ],
   "properties": {
     "isImei": {
       "type": "boolean",
@@ -16,17 +19,15 @@
     },
     "isSoldPrice": {
       "type": "boolean",
-      "default": false,
-      "description": "— satildi isaretlenen cihazlara kaca sorulsun"
+      "description": "— satildi isaretlenen cihazlara kaca sorulsun",
+      "default": false
     },
     "isSoldWho": {
       "type": "boolean",
-      "default": false,
-      "description": "— satildi isaretlenen cihazlara kime sorulsun"
-
+      "description": "— satildi isaretlenen cihazlara kime sorulsun",
+      "default": false
     }
   },
-  "hidden": ["id"],
   "validations": [],
   "relations": {},
   "acls": [],

@@ -1,0 +1,17 @@
+'use strict';
+const XLSX = require('xlsx');
+const alasql = require('alasql');
+
+module.exports = function(app) {
+
+app.models.device.find(function (err, datas) {
+  let jsonDatas = datas.map(d=> d.toObject());
+  let groupedData = alasql("select concat_ws(' ',brand, model, storage, color) telefon, count(*) adet from ? group by brand, model, storage, color", [jsonDatas])
+  const workSheet = XLSX.utils.json_to_sheet(groupedData);
+  const workBook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workBook, workSheet, 'Sheet 1');
+
+  XLSX.writeFile(workBook, './temp/sample2.xlsx');
+});
+
+};
