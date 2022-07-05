@@ -63,7 +63,7 @@ Thumbs.db
 *.swo
 *.swp
 *.tgz
-*.xml
+# *.xml
 .DS_Store
 .idea
 .project
